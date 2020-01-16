@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shortest Path Planning | Jian Zhang</title>
+    <link>https://jianzhang6.github.io/tags/shortest-path-planning/</link>
+      <atom:link href="https://jianzhang6.github.io/tags/shortest-path-planning/index.xml" rel="self" type="application/rss+xml" />
+    <description>Shortest Path Planning</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jian Zhang</copyright><lastBuildDate>Sun, 01 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://jianzhang6.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Shortest Path Planning</title>
+      <link>https://jianzhang6.github.io/tags/shortest-path-planning/</link>
+    </image>
+    
+    <item>
+      <title>A Collision-Free 3D Path Planning Strategy for Mobile Robots</title>
+      <link>https://jianzhang6.github.io/publication/conference-paper/anzcc2019/1/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/publication/conference-paper/anzcc2019/1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A Hybrid Reactive Navigation Strategy for a Non-holonomic Mobile Robot in Cluttered Environments</title>
+      <link>https://jianzhang6.github.io/publication/conference-paper/ccc2019/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/publication/conference-paper/ccc2019/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
