@@ -21,15 +21,6 @@
     </item>
     
     <item>
-      <title>First post</title>
-      <link>https://jianzhang6.github.io/post/getting-started/</link>
-      <pubDate>Thu, 16 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://jianzhang6.github.io/post/getting-started/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;猪宝 🐷， 看我跑起来啦&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>A Collision-Free 3D Path Planning Strategy for Mobile Robots</title>
       <link>https://jianzhang6.github.io/publication/conference-paper/anzcc2019/1/</link>
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
@@ -46,6 +37,19 @@
     </item>
     
     <item>
+      <title>ANZCC 2019 Best Paper 🥳</title>
+      <link>https://jianzhang6.github.io/post/anzcc/</link>
+      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/post/anzcc/</guid>
+      <description>&lt;p&gt;Auckland view from Sky Tower by Jian, 2019&lt;/p&gt;
+&lt;p&gt;I am truly humbled and honored to receive the ANZCC 2019 best paper award. This is clearly one of the most memorable days of my Ph.D. study!&lt;/p&gt;
+&lt;p&gt;My deepest thanks for ANZCC&#39;s encouragement！&lt;/p&gt;
+&lt;p&gt;😉&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;nz.JPG&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>A Hybrid Reactive Navigation Strategy for a Non-holonomic Mobile Robot in Cluttered Environments</title>
       <link>https://jianzhang6.github.io/publication/conference-paper/ccc2019/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
@@ -54,7 +58,7 @@
     </item>
     
     <item>
-      <title>Display Jupyter Notebooks with Academic</title>
+      <title>09 Multiclass Classification</title>
       <link>https://jianzhang6.github.io/post/jupyter/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       <guid>https://jianzhang6.github.io/post/jupyter/</guid>

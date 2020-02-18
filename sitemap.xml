@@ -83,31 +83,6 @@
   </url>
   
   <url>
-    <loc>https://jianzhang6.github.io/categories/</loc>
-    <lastmod>2020-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jianzhang6.github.io/categories/demo/</loc>
-    <lastmod>2020-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jianzhang6.github.io/post/getting-started/</loc>
-    <lastmod>2020-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jianzhang6.github.io/post/</loc>
-    <lastmod>2020-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jianzhang6.github.io/tags/%E6%97%A5%E5%B8%B8/</loc>
-    <lastmod>2020-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jianzhang6.github.io/tags/3d-environments/</loc>
     <lastmod>2019-12-01T00:00:00+00:00</lastmod>
   </url>
@@ -140,6 +115,21 @@
   <url>
     <loc>https://jianzhang6.github.io/tags/reinforcement-learning/</loc>
     <lastmod>2019-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jianzhang6.github.io/post/anzcc/</loc>
+    <lastmod>2020-01-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jianzhang6.github.io/post/</loc>
+    <lastmod>2020-01-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jianzhang6.github.io/tags/%E6%97%A5%E5%B8%B8/</loc>
+    <lastmod>2020-01-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -185,6 +175,10 @@
   <url>
     <loc>https://jianzhang6.github.io/project/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jianzhang6.github.io/categories/</loc>
   </url>
   
 </urlset>
