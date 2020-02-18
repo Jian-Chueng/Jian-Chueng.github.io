@@ -5,12 +5,29 @@
     <link>https://jianzhang6.github.io/authors/admin/</link>
       <atom:link href="https://jianzhang6.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     <description>Jian Zhang</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jian Zhang</copyright><lastBuildDate>Sun, 01 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jian Zhang</copyright><lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jianzhang6.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Jian Zhang</title>
       <link>https://jianzhang6.github.io/authors/admin/</link>
     </image>
+    
+    <item>
+      <title>Occlusion-aware UAV Path Planning for Reconnaissance and Surveillance in Complex Environments</title>
+      <link>https://jianzhang6.github.io/publication/conference-paper/robio2019/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/publication/conference-paper/robio2019/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>First post</title>
+      <link>https://jianzhang6.github.io/post/getting-started/</link>
+      <pubDate>Thu, 16 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/post/getting-started/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;猪宝 🐷， 看我跑起来啦&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>A Collision-Free 3D Path Planning Strategy for Mobile Robots</title>
@@ -26,18 +43,6 @@
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
       <guid>https://jianzhang6.github.io/publication/conference-paper/anzcc2019/2/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>ANZCC 2019 Best Paper 🥳</title>
-      <link>https://jianzhang6.github.io/post/anzcc/</link>
-      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>https://jianzhang6.github.io/post/anzcc/</guid>
-      <description>&lt;p&gt;I am truly humbled and honored to receive the ANZCC 2019 best paper award. This is clearly one of the most memorable days of my Ph.D. study!&lt;/p&gt;
-&lt;p&gt;My deepest thanks for ANZCC&#39;s encouragement！&lt;/p&gt;
-&lt;p&gt;😉&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;nz.JPG&#34; alt=&#34;test&#34;&gt;&lt;/p&gt;
-</description>
     </item>
     
     <item>
