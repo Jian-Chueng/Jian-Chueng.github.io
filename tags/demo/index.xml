@@ -1,23 +1,70 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Demo | Academic</title>
-    <link>/tags/demo/</link>
-      <atom:link href="/tags/demo/index.xml" rel="self" type="application/rss+xml" />
+    <title>Demo | Jian Zhang</title>
+    <link>https://jianzhang6.github.io/tags/demo/</link>
+      <atom:link href="https://jianzhang6.github.io/tags/demo/index.xml" rel="self" type="application/rss+xml" />
     <description>Demo</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jian Zhang</copyright><lastBuildDate>Tue, 17 Mar 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://jianzhang6.github.io/images/icon_hu931796a4a973aa12569eec04f67feb0b_29675_512x512_fill_lanczos_center_2.png</url>
       <title>Demo</title>
-      <link>/tags/demo/</link>
+      <link>https://jianzhang6.github.io/tags/demo/</link>
     </image>
     
     <item>
-      <title>External Project</title>
-      <link>/project/external-project/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>/project/external-project/</guid>
-      <description></description>
+      <title>ROS Melodic安装记录</title>
+      <link>https://jianzhang6.github.io/blog/ros-learning-note/installation-ros/</link>
+      <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/blog/ros-learning-note/installation-ros/</guid>
+      <description>&lt;p&gt;经过一番思想上挣扎，好几次失败终于从Ubuntu16.04+Kinetic升级到18.04+Melodic。😭️&lt;/p&gt;
+&lt;h3 id=&#34;1-ubuntu-respositories&#34;&gt;1. Ubuntu respositories&lt;/h3&gt;
+&lt;p&gt;打开《软件和更新》确保允许&amp;quot;restricted,&amp;rdquo; &amp;ldquo;universe,&amp;rdquo; and &amp;ldquo;multiverse&amp;rdquo; 。&lt;/p&gt;
+&lt;h3 id=&#34;2-设置sourceslist&#34;&gt;2. 设置sources.list&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo sh -c &#39;echo &amp;quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&amp;quot; &amp;gt; /etc/apt/sources.list.d/ros-latest.list&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-设置keys&#34;&gt;3. 设置keys&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo apt-key adv --keyserver &#39;hkp://keyserver.ubuntu.com:80&#39; --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;2020-03-18%2021-24-21.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;由于之前安装过其他版本所以是这样&lt;/p&gt;
+&lt;h3 id=&#34;4-安装&#34;&gt;4. 安装&lt;/h3&gt;
+&lt;p&gt;确保Debian软件包目录索引是最新的&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo apt update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装完整版：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo apt install ros-melodic-desktop-full
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;5-初始化rosdep&#34;&gt;5. 初始化rosdep&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo rosdep init
+rosdep update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;2020-03-18%2023-33-52.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;6-环境设置&#34;&gt;6. 环境设置&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;echo &amp;quot;source /opt/ros/melodic/setup.bash&amp;quot; &amp;gt;&amp;gt; ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;检查是否正确&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;gedit ~/ .bashrc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;最后几行&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;2020-03-19%2000-03-07.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;7软件包的依赖关系&#34;&gt;7.软件包的依赖关系&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;8-检查是否成功安装&#34;&gt;8. 检查是否成功安装&lt;/h3&gt;
+&lt;p&gt;新Terminal:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;roscore
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;2020-03-19%2000-08-15.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;OK～＼（≧▽≦）／～啦啦啦&lt;/p&gt;
+&lt;h4 id=&#34;尝试一下控制小乌龟&#34;&gt;尝试一下控制小乌龟&lt;/h4&gt;
+&lt;p&gt;新Terminal:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;rosrun turtlesim turtlesim_node
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;新Terminal:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;rosrun turtlesim turtle_teleop_key
+&lt;/code&gt;&lt;/pre&gt;
+</description>
     </item>
     
   </channel>
