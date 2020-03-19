@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publication_types | Jian Zhang</title>
+    <link>https://jianzhang6.github.io/publication_types/</link>
+      <atom:link href="https://jianzhang6.github.io/publication_types/index.xml" rel="self" type="application/rss+xml" />
+    <description>Publication_types</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jian Zhang</copyright><lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://jianzhang6.github.io/images/icon_hu931796a4a973aa12569eec04f67feb0b_29675_512x512_fill_lanczos_center_2.png</url>
+      <title>Publication_types</title>
+      <link>https://jianzhang6.github.io/publication_types/</link>
+    </image>
+    
+    <item>
+      <title>1</title>
+      <link>https://jianzhang6.github.io/publication_types/1/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/publication_types/1/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
