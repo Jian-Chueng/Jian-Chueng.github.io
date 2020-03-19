@@ -29,7 +29,7 @@
   
   <url>
     <loc>https://jianzhang6.github.io/authors/admin/</loc>
-    <lastmod>2020-01-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -39,7 +39,7 @@
   
   <url>
     <loc>https://jianzhang6.github.io/authors/</loc>
-    <lastmod>2020-01-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -60,6 +60,11 @@
   <url>
     <loc>https://jianzhang6.github.io/publication/conference-paper/robio2019/</loc>
     <lastmod>2020-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jianzhang6.github.io/post/</loc>
+    <lastmod>2020-02-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -85,6 +90,16 @@
   <url>
     <loc>https://jianzhang6.github.io/tags/uav/</loc>
     <lastmod>2020-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jianzhang6.github.io/tags/%E6%97%A5%E5%B8%B8/</loc>
+    <lastmod>2020-02-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jianzhang6.github.io/post/getting-started/</loc>
+    <lastmod>2020-02-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -128,16 +143,6 @@
   </url>
   
   <url>
-    <loc>https://jianzhang6.github.io/post/</loc>
-    <lastmod>2020-01-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jianzhang6.github.io/tags/%E6%97%A5%E5%B8%B8/</loc>
-    <lastmod>2020-01-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jianzhang6.github.io/publication/conference-paper/ccc2019/</loc>
     <lastmod>2019-07-01T00:00:00+00:00</lastmod>
   </url>
@@ -153,7 +158,17 @@
   </url>
   
   <url>
+    <loc>https://jianzhang6.github.io/blog/build-an-autonomous-car-with-python/01/</loc>
+    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jianzhang6.github.io/blog/build-an-autonomous-car-with-python/09/</loc>
+    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jianzhang6.github.io/categories/</loc>
     <lastmod>2019-09-05T00:00:00+00:00</lastmod>
   </url>
   
@@ -168,7 +183,13 @@
   </url>
   
   <url>
-    <loc>https://jianzhang6.github.io/categories/</loc>
+    <loc>https://jianzhang6.github.io/tags/%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jianzhang6.github.io/categories/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6/</loc>
+    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>

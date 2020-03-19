@@ -21,7 +21,7 @@
     </item>
     
     <item>
-      <title>coverage</title>
+      <title>Coverage</title>
       <link>https://jianzhang6.github.io/tags/coverage/</link>
       <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://jianzhang6.github.io/tags/coverage/</guid>
@@ -37,7 +37,7 @@
     </item>
     
     <item>
-      <title>occlusion-aware</title>
+      <title>Occlusion-aware</title>
       <link>https://jianzhang6.github.io/tags/occlusion-aware/</link>
       <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://jianzhang6.github.io/tags/occlusion-aware/</guid>
@@ -65,6 +65,14 @@
       <link>https://jianzhang6.github.io/tags/uav/</link>
       <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://jianzhang6.github.io/tags/uav/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>日常</title>
+      <link>https://jianzhang6.github.io/tags/%E6%97%A5%E5%B8%B8/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/tags/%E6%97%A5%E5%B8%B8/</guid>
       <description></description>
     </item>
     
@@ -109,14 +117,6 @@
     </item>
     
     <item>
-      <title>日常</title>
-      <link>https://jianzhang6.github.io/tags/%E6%97%A5%E5%B8%B8/</link>
-      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>https://jianzhang6.github.io/tags/%E6%97%A5%E5%B8%B8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Cluttered Environments</title>
       <link>https://jianzhang6.github.io/tags/cluttered-environments/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
@@ -129,6 +129,14 @@
       <link>https://jianzhang6.github.io/tags/q-learning/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
       <guid>https://jianzhang6.github.io/tags/q-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>笔记</title>
+      <link>https://jianzhang6.github.io/tags/%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/tags/%E7%AC%94%E8%AE%B0/</guid>
       <description></description>
     </item>
     

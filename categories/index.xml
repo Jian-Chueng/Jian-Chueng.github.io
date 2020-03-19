@@ -5,12 +5,20 @@
     <link>https://jianzhang6.github.io/categories/</link>
       <atom:link href="https://jianzhang6.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jian Zhang</copyright>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jian Zhang</copyright><lastBuildDate>Tue, 05 Feb 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jianzhang6.github.io/images/icon_hu931796a4a973aa12569eec04f67feb0b_29675_512x512_fill_lanczos_center_2.png</url>
       <title>Categories</title>
       <link>https://jianzhang6.github.io/categories/</link>
     </image>
+    
+    <item>
+      <title>自动驾驶</title>
+      <link>https://jianzhang6.github.io/categories/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/categories/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
