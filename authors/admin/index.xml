@@ -5,12 +5,2072 @@
     <link>https://jianzhang6.github.io/authors/admin/</link>
       <atom:link href="https://jianzhang6.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     <description>Jian Zhang</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jian Zhang</copyright><lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jian Zhang</copyright><lastBuildDate>Sat, 25 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jianzhang6.github.io/images/icon_hu931796a4a973aa12569eec04f67feb0b_29675_512x512_fill_lanczos_center_2.png</url>
       <title>Jian Zhang</title>
       <link>https://jianzhang6.github.io/authors/admin/</link>
     </image>
+    
+    <item>
+      <title>01 引入概念</title>
+      <link>https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/01/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/01/</guid>
+      <description>&lt;h1 id=&#34;数据结构和算法python&#34;&gt;数据结构和算法（Python）&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.soong.site/datastructure/chapter1/6.html&#34;&gt;教材&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=ROzdRsYSp7k&amp;amp;list=PLC664nq_h8b_q8Hjq_q8fbst1TO1AKKz-&amp;amp;index=4&#34;&gt;视频课&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;01什么是算法&#34;&gt;01什么是算法&lt;/h2&gt;
+&lt;p&gt;算法就是计算机处理信息的本质，因为计算机程序的本质就是一个算法来高速计算机确切的步骤来执行一个指定的任务。
+算法是独立存在的解决问题的方法和思 想，实现的语言不重要&lt;/p&gt;
+&lt;p&gt;算法的5特性：
+输入：0或多个
+输出：至少一个
+有穷性：算法有限的步骤之后不会无限循环，并且在可以接受的时间内完成
+确定性：算法中的每一步都有确定的含义
+可行性：每一步都是可行的，也就是都能执行有限的次数完成&lt;/p&gt;
+&lt;p&gt;教材：数据结构与算法：python语言描述
+进阶：算法导论（更深，重点学思想&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import time
+start_time = time.time()
+for a in range(0,1001):
+    for b in range(0,1001):
+        for c in range(0,1001):
+            if a**2+b**2 == c**2 and a+b+c ==1000:
+                print(&amp;quot;a, b, c: %d, %d, %d&amp;quot; % (a,b,c))
+end_time = time.time() 
+print(&amp;quot;Duration: %d&amp;quot; %(end_time-start_time))
+print(&amp;quot;finished&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;a, b, c: 0, 500, 500
+a, b, c: 200, 375, 425
+a, b, c: 375, 200, 425
+a, b, c: 500, 0, 500
+Duration: 682
+finished
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;改进： 因为a,b 确定下来c也就确定了&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import time
+start_time = time.time()
+for a in range(0,1001):
+    for b in range(0,1001):
+        c = 1000-a-b
+        if a**2+b**2 == c**2:
+            print(&amp;quot;a, b, c: %d, %d, %d&amp;quot; % (a,b,c))
+end_time = time.time() 
+print(&amp;quot;Duration: %f&amp;quot; %(end_time-start_time))
+print(&amp;quot;finished&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;a, b, c: 0, 500, 500
+a, b, c: 200, 375, 425
+a, b, c: 375, 200, 425
+a, b, c: 500, 0, 500
+Duration: 0.905913
+finished
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;02-算法效率衡量&#34;&gt;02 算法效率衡量&lt;/h2&gt;
+&lt;p&gt;时间复杂度与大O表示法&lt;br&gt;
+单靠运行时间不可信不客观：和电脑新旧，运算能力有关&lt;br&gt;
+&lt;strong&gt;时间复杂度：描述算法时间上的效率&lt;br&gt;&lt;/strong&gt;
+假定执行算法每一个基本操作的时间是固定的，&lt;strong&gt;执行的&lt;u&gt;基本运算数量&lt;/u&gt;&lt;/strong&gt;可以忽略机器环境的影响客观的反映算法的时间效率&lt;br&gt;
+&lt;strong&gt;&amp;ldquo;大O表示法&amp;quot;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;时间复杂度：假设存在函数g，似的算法A处理规模为n的问题实力所用的时间为T(n)=O(g(n)),则称O(g(n))为算法A的监禁时间复杂度，简称为时间复杂度，记为T(n)&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;计量算法基本操作的规模函数中的常量因子可以忽略不计&lt;/p&gt;
+&lt;h2 id=&#34;03-最坏时间复杂度&#34;&gt;03 最坏时间复杂度&lt;/h2&gt;
+&lt;p&gt;分析算法时，存在几种可能的考虑：&lt;/p&gt;
+&lt;p&gt;算法完成工作最少需要多少基本操作，即最优时间复杂度：没啥意义&lt;br&gt;
+算法完成工作最多需要多少基本操作，即&lt;strong&gt;最坏时间复杂度&lt;/strong&gt;:一种保证，通常时间复杂度就是指最坏这个&lt;br&gt;
+算法完成工作平均需要多少基本操作，即平均时间复杂度：全面评价，但没有保证&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;##总结：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;基本操作，即只有常数项，认为其时间复杂度为O(1)&lt;/li&gt;
+&lt;li&gt;顺序结构，时间复杂度按加法进行计算&lt;/li&gt;
+&lt;li&gt;循环结构，时间复杂度按乘法进行计算&lt;/li&gt;
+&lt;li&gt;分支结构，时间复杂度取最大值 (比如if else)&lt;/li&gt;
+&lt;li&gt;判断一个算法的效率时，往往只需要关注操作数量的最高次项，其它次要项和常数项可以忽略&lt;/li&gt;
+&lt;li&gt;在没有特殊说明时，我们所分析的算法的时间复杂度都是指最坏时间复杂度&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;最常见的时间复杂度&#34;&gt;最常见的时间复杂度&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;执行次数函数举例&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;阶&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;非正式术语&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;12&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;O(1)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;常数阶&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;2n+3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;O(n)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;线性阶&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;$3n^2+2n+1$&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;$O(n^2)$&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;平方阶&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;5log2n+20&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;O(logn)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;对数阶&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;2n+3nlog2n+19&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;O(nlogn)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;nlogn阶&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;$6n^3+2n^2+3n+4$&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;$O(n^3)$&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;立方阶&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;$2^n $&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;$O(2^n)$&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;指数阶&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;注意，经常将log2n（以2为底的对数）简写成logn&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;必须记住：&lt;/strong&gt;
+$O(1) &amp;lt; O(logn) &amp;lt; O(n) &amp;lt; O(nlogn) &amp;lt; O(n^2)&amp;lt; O(n^2logn) &amp;lt; O(n^3) &amp;lt; O(2^n) &amp;lt; O(n!) &amp;lt; O(n^n)$&lt;/p&gt;
+&lt;h2 id=&#34;python-内置类型性能分析----timeit&#34;&gt;Python 内置类型性能分析 &amp;ndash; timeit&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;列表生成式&lt;br&gt;
+Python内置的一种极其强大的生成列表 list 的表达式。返回结果必须是列表。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;基本语法：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;[ 变量表达式 for 变量 in 表达式 ]&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#对比四种list列表构造方式的效率
+
+from timeit import Timer
+
+def test1(): #append()
+   l = []
+   for i in range(10000):
+      l.append(i)
+
+def test2(): #+=
+   l = []
+   for i in range(10000):
+      l += [i]
+
+def test2_1(): #+
+   l = []
+   for i in range(10000):
+      l = l + [i]
+
+def test3(): #列表生成式 [i for i in range]
+   l = [i for i in range(10000)]
+
+def test4(): #可迭代对象直接生成列表 list(range)
+   l = list(range(10000))
+
+def test5(): #extend()
+   l = []
+   for i in range(10000):
+     l.extend([i])
+   
+    
+
+
+
+timer1= Timer(&amp;quot;test1()&amp;quot;,&amp;quot;from __main__ import test1&amp;quot;)
+print(&amp;quot;append():&amp;quot;,timer1.timeit(number=1000),&amp;quot;seconds&amp;quot;)
+
+timer2= Timer(&amp;quot;test2()&amp;quot;,&amp;quot;from __main__ import test2&amp;quot; )
+print(&amp;quot;+=:&amp;quot;,timer2.timeit(number=1000),&amp;quot;seconds&amp;quot;)
+
+timer2_1= Timer(&amp;quot;test2_1()&amp;quot;,&amp;quot;from __main__ import test2_1&amp;quot; )
+print(&amp;quot;+:&amp;quot;,timer2_1.timeit(number=1000),&amp;quot;seconds&amp;quot;)
+
+timer3= Timer(&amp;quot;test3()&amp;quot;,&amp;quot;from __main__ import test3&amp;quot; )
+print(&amp;quot;[i for i in range]:&amp;quot;,timer3.timeit(number=1000),&amp;quot;seconds&amp;quot;)
+
+timer4= Timer(&amp;quot;test4()&amp;quot;,&amp;quot;from __main__ import test4&amp;quot; )
+print(&amp;quot;list(range):&amp;quot;,timer4.timeit(number=1000),&amp;quot;seconds&amp;quot;)
+
+timer5= Timer(&amp;quot;test5()&amp;quot;,&amp;quot;from __main__ import test5&amp;quot; )
+print(&amp;quot;extend():&amp;quot;,timer5.timeit(number=1000),&amp;quot;seconds&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;append(): 0.64611264999985 seconds
++=: 0.6851804809998612 seconds
++: 112.89560661899986 seconds
+[i for i in range]: 0.2947488119998525 seconds
+list(range): 0.1802340100002766 seconds
+extend(): 0.9059880499999053 seconds
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看出：光用+很费时间，可以选择使用+= or extend（）替换&lt;/p&gt;
+&lt;h2 id=&#34;insert-和-append-比较&#34;&gt;insert 和 append 比较&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;list.insert(pos, elmnt)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;def test1(): #append()
+   l = []
+   for i in range(10000):
+      l.append(i) #尾部添加
+
+
+def test6(): #extend()
+   l = []
+   for i in range(10000):
+     l.insert(0, i) #头部添加
+     
+timer1= Timer(&amp;quot;test1()&amp;quot;,&amp;quot;from __main__ import test1&amp;quot;)
+print(&amp;quot;append():&amp;quot;,timer1.timeit(number=1000),&amp;quot;seconds&amp;quot;)
+
+timer6= Timer(&amp;quot;test6()&amp;quot;,&amp;quot;from __main__ import test6&amp;quot; )
+print(&amp;quot;insert():&amp;quot;,timer6.timeit(number=1000),&amp;quot;seconds&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;append(): 0.6008801650004898 seconds
+insert(): 19.97815154900036 seconds
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;从结果可以看出，append从尾端添加元素效率远远高于insert从顶端添加元素&lt;/strong&gt;&lt;br&gt;
+原因： 由于列表list的数据存储[方式决定的&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;list内置操作的时间复杂度&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;image/list%E6%93%8D%E4%BD%9C.png&#34; alt=&#34;链接文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;lndex:O(1)
+append: O(1)
+contain(in): O(n)查找&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;dict内置操作的时间复杂度&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;image/dict%E6%93%8D%E4%BD%9C.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;数据结构&#34;&gt;数据结构&lt;/h2&gt;
+&lt;p&gt;算法关注的是问题的解决步骤，没有关注处理的是什么样的数据&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们如何用Python中的类型来保存一个班的学生信息？ 如果想要快速的通过学生姓名获取其信息呢？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;    实际上当我们在思考这个问题的时候，我们已经用到了数据结构。列表和字典都可以存储一个班的学生信息，但是想要在列表中获取一名同学的信息时，就要遍历这个列表，其时间复杂度为O(n)，而使用字典存储时，可将学生姓名作为字典的键，学生信息作为值，进而查询时不需要遍历便可快速获取到学生信息，其时间复杂度为O(1)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;概念&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;    数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。&lt;/p&gt;
+&lt;p&gt;简而言之：一组数据如何保存&lt;/p&gt;
+&lt;p&gt;基本数据类型： float、int, char&amp;hellip;&lt;br&gt;
+所以list， dict&amp;hellip;已经是一种高级的数据结构了&lt;/p&gt;
+&lt;h2 id=&#34;算法与数据结构的区别&#34;&gt;算法与数据结构的区别&lt;/h2&gt;
+&lt;p&gt;程序 = 数据结构 + 算法&lt;/p&gt;
+&lt;p&gt;算法：为解决实际问题设计的&lt;br&gt;
+数据结构： 算法处理问题的载体&lt;/p&gt;
+&lt;h2 id=&#34;抽象数据类型adtabstract-data-type&#34;&gt;抽象数据类型(ADT：Abstract Data Type)&lt;/h2&gt;
+&lt;p&gt;定义：一个数学模型以及定义在此数学模型上的一组操作&lt;/p&gt;
+&lt;p&gt;例子：&lt;/p&gt;
+&lt;p&gt;先规定好数据如何保存（数据结构），定义这些数据结构支持的操作（具体怎么实现不去管）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class students(object):
+
+    def adds
+    def pop
+    def sort
+    def ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;a = [1, 2]
+a *=10
+print(a)
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>02 顺序表</title>
+      <link>https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/02/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/02/</guid>
+      <description>&lt;p&gt;根据线性表的实际存储方式，分为两种实现模型：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;顺序表&lt;/strong&gt; :将元素顺序地存放在一块连续的存储区里，元素间的顺序关系由它们的存储顺序自然表示。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;链表&lt;/strong&gt; :将元素存放在通过链接构造起来的一系列存储块中&lt;/p&gt;
+&lt;h2 id=&#34;内存-类型本质-连续储存&#34;&gt;内存， 类型本质， 连续储存&lt;/h2&gt;
+&lt;p&gt;内存是：以字节Byte为基本单位（1个字节有8位）连续的存储空间&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;普通整型Int&lt;/strong&gt;：需要4个字节（对于32位机器）&lt;/p&gt;
+&lt;p&gt;例子： Int a = 1: 二进制 0000 0001 （只有一个字节），但是Int 占4个字节，所以还有三个字节是 0000 0000&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;字符串Char&lt;/strong&gt;： 需要1个字节&lt;/p&gt;
+&lt;p&gt;所以：变量类型不同，需要的存储空间不同；计算机对二进制数据的方式不同&lt;/p&gt;
+&lt;p&gt;一组相同类型数据最简单的存储方式： 顺序表连续存储&lt;/p&gt;
+&lt;h2 id=&#34;顺序表的基本形式&#34;&gt;顺序表的基本形式&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;基本顺序表只能处理相同类型&lt;/p&gt;
+&lt;p&gt;元素外置的顺序表可以存储不同类型的数据，因为物理地址所占的大小是一样的（连续空间储存地址）&lt;/p&gt;
+&lt;h2 id=&#34;顺序表的结构与实现&#34;&gt;顺序表的结构与实现&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/6.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;一个顺序表的完整信息包括两部分，一部分是为实现正确操作而需记录的信息，即有关表的整体情况的信息，这部分信息主要包括元素存储区的&lt;strong&gt;容量&lt;/strong&gt;和当前表中已有的&lt;strong&gt;元素个数&lt;/strong&gt;两项；另一部分是表中的元素集合&lt;/p&gt;
+&lt;h3 id=&#34;顺序表的两种基本实现方式&#34;&gt;顺序表的两种基本实现方式&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/7.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;图a为一体式结构，存储表信息的单元与元素存储区以连续的方式安排在一块存储区里，两部分数据的整体形成一个完整的顺序表对象。&lt;/li&gt;
+&lt;li&gt;图b为分离式结构，表对象里只保存与整个表有关的信息（即容量和元素个数），实际数据元素存放在另一个独立的元素存储区里，通过链接与基本表对象关联。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一体式结构整体性强，易于管理。但是由于数据元素存储区域是表对象的一部分，顺序表创建后，元素存储区就固定了。&lt;/p&gt;
+&lt;h3 id=&#34;元素存储区替换&#34;&gt;元素存储区替换&lt;/h3&gt;
+&lt;p&gt; 一体式结构由于顺序表信息区与数据区连续存储在一起，所以若想更换数据区，则只能整体搬迁，即整个顺序表对象（指存储顺序表的结构信息的区域）改变了。&lt;/p&gt;
+&lt;p&gt;分离式结构若想更换数据区，只需将表信息区中的数据区链接地址更新即可，而该顺序表对象不变。&lt;/p&gt;
+&lt;h3 id=&#34;元素存储区扩充&#34;&gt;元素存储区扩充&lt;/h3&gt;
+&lt;p&gt;可以扩充的分离式结构顺序表： &lt;strong&gt;动态顺序表&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;扩充策略：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;线性增长：每次扩充固定树木的存储位置&lt;/p&gt;
+&lt;p&gt;节省空间，操作频繁&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;加倍增长： 每次扩充容量加倍&lt;/p&gt;
+&lt;p&gt;减少操作次数， 可能浪费空间资源，以空间换时间（推荐）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;顺序表的操作&#34;&gt;顺序表的操作&lt;/h2&gt;
+&lt;h3 id=&#34;增加元素&#34;&gt;增加元素&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/8.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;a. 尾端加入元素，时间复杂度为O(1)&lt;/p&gt;
+&lt;p&gt;b. 非保序（顺序可变）的加入元素（不常见），时间复杂度为O(1)&lt;/p&gt;
+&lt;p&gt;c. 保序（顺序不可变）的元素加入，时间复杂度为O(n)&lt;/p&gt;
+&lt;h3 id=&#34;删除元素&#34;&gt;删除元素&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/9.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;a. 删除表尾元素，时间复杂度为O(1)&lt;/p&gt;
+&lt;p&gt;b. 非保序的元素删除（不常见），时间复杂度为O(1)&lt;/p&gt;
+&lt;p&gt;c. 保序的元素删除，时间复杂度为O(n)&lt;/p&gt;
+&lt;h2 id=&#34;python中的顺序表&#34;&gt;Python中的顺序表&lt;/h2&gt;
+&lt;p&gt;Python中的list和tuple两种类型采用了顺序表的实现技术，具有前面讨论的顺序表的所有性质。&lt;/p&gt;
+&lt;p&gt;tuple不可以修改，其他与list的性质类似。&lt;/p&gt;
+&lt;h3 id=&#34;list的基本实现技术&#34;&gt;list的基本实现技术&lt;/h3&gt;
+&lt;p&gt;基于下标（位置）的高效元素访问和更新，时间复杂度应该是O(1)；&lt;/p&gt;
+&lt;p&gt;为满足该特征，应该采用顺序表技术，表中元素保存在一块连续的存储区中。&lt;/p&gt;
+&lt;p&gt;允许任意加入元素，而且在不断加入元素的过程中，表对象的标识（函数id得到的值）不变&lt;/p&gt;
+&lt;p&gt;为满足该特征，就必须能更换元素存储区，并且为保证更换存储区时list对象的标识id不变，只能采用分离式实现技术。&lt;/p&gt;
+&lt;p&gt;在Python的官方实现中，&lt;strong&gt;list就是一种采用分离式技术实现的动态顺序表&lt;/strong&gt;。这就是为什么用list.append(x) （或 list.insert(len(list), x)，即尾部插入）比在指定位置插入元素效率高的原因。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>03 链表栈队列</title>
+      <link>https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/03/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/03/</guid>
+      <description>&lt;h1 id=&#34;链表&#34;&gt;链表&lt;/h1&gt;
+&lt;p&gt;链表和顺序表统称为线性表：&lt;strong&gt;物理储存&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;区别是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;顺序表：连续的储存&lt;/li&gt;
+&lt;li&gt;链表：离散的储存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;为什么需要链表&#34;&gt;为什么需要链表&lt;/h4&gt;
+&lt;p&gt;顺序表的构建需要预先知道数据大小来申请连续的存储空间，而在进行扩充时又需要进行数据的搬迁，所以使用起来并不是很灵活。&lt;/p&gt;
+&lt;p&gt;链表结构可以充分利用计算机内存空间，实现灵活的内存动态管理。&lt;/p&gt;
+&lt;h4 id=&#34;链表的定义&#34;&gt;链表的定义&lt;/h4&gt;
+&lt;p&gt;链表（Linked list）是一种常见的基础数据结构，是一种线性表，但是不像顺序表一样连续存储数据，而是在每一个节点（数据存储单元）里存放下一个节点的位置信息（即地址）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E5%9B%BE%E7%A4%BA.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;单向链表&#34;&gt;单向链表&lt;/h2&gt;
+&lt;p&gt;单向链表也叫单链表，是链表中最简单的一种形式，它的每个节点包含两个域，一个&lt;strong&gt;信息域（元素域）&lt;strong&gt;和一个&lt;/strong&gt;链接域&lt;/strong&gt;。这个链接指向链表中的下一个节点，而最后一个节点的链接域则指向一个空值。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/11.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;P表示第一个节点的位置&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;变量p指向链表的头节点（首节点）的位置，从p出发能找到表中的任意节点。&lt;/li&gt;
+&lt;li&gt;表元素域elem用来存放具体的数据。&lt;/li&gt;
+&lt;li&gt;链接域next用来存放下一个节点的位置（python中的标识）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;单链表的操作&#34;&gt;单链表的操作&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;is_empty() 链表是否为空&lt;br&gt;
+length() 链表长度&lt;br&gt;
+travel() 遍历整个链表&lt;br&gt;
+add(item) 链表头部添加元素&lt;br&gt;
+append(item) 链表尾部添加元素&lt;br&gt;
+insert(pos, item) 指定位置添加元素&lt;br&gt;
+remove(item) 删除节点&lt;br&gt;
+search(item) 查找节点是否存在&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;注意:Python 中的变量名保存的是对象的地址 而不是对象本身&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 节点实现
+
+class SingleNode(object):
+  &amp;quot;&amp;quot;&amp;quot;单链表的结点&amp;quot;&amp;quot;&amp;quot;
+  def __init__(self, item):
+    # item存放数据元素
+    self.item = item
+    # next是下一个节点的标识,因未知所以设为空None
+    self.next = None
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;#单链表的实现
+
+class SingleLinkList(object):
+  &amp;quot;单链表&amp;quot;
+  def __init__(self, node=None):
+    &amp;quot;链表头&amp;quot;
+    self.__head = None
+  #_表示私有
+
+  def is_empty(self): 
+    &amp;quot;链表是否为空&amp;quot;
+    return self.__head == None
+    #将head是否指向None作为return的结果
+
+  def length(self): 
+    &amp;quot;链表长度&amp;quot;
+    # cur初始时指向头节点，用来移动遍历节点
+    cur = self.__head
+    count = 0
+    # 尾节点指向None，当未到达尾部时
+    while cur != None:
+        count += 1
+        # 将cur后移一个节点
+        cur = cur.next
+    return count
+
+
+  def travel(self): 
+    &amp;quot;遍历整个链表&amp;quot;
+    cur = self.__head
+    while cur != None:
+      print(cur.item, end=&amp;quot; &amp;quot;)
+      cur = cur.next
+    print(&amp;quot;&amp;quot;) #换行
+
+  def append(self, item):
+    &amp;quot;链表尾部添加元素&amp;quot;
+    node = SingleNode(item)
+    # 先判断链表是否为空，若是空链表，则将_head指向新节点node
+    if self.is_empty():
+      self.__head = node
+    # 若不为空，则找到尾部，将尾节点的next指向新节点
+    else:
+      cur = self.__head
+      while cur.next != None:
+        cur = cur.next
+      cur.next = node
+  
+  def add(self, item): 
+    &amp;quot;链表头部添加元素&amp;quot;
+    # 先创建一个保存item值的节点
+    node = SingleNode(item)
+    # 将新节点的链接域next指向头节点，即_head指向的位置
+    node.next = self.__head
+    # 将链表的头_head指向新节点
+    self.head = node
+
+  def insert(self, pos, item): 
+    &amp;quot;指定位置添加元素&amp;quot;
+    if pos &amp;lt;= 0:
+      self.add(item)
+    elif pos &amp;gt; (self.length()-1):
+      self.append(item)
+    else:
+      node = SingleNode(item)
+      # pre用来指向指定位置pos的前一个位置pos-1，初始从头节点开始移动到指定位置
+      pre = self.__head
+      count = 0
+      while count &amp;lt; (pos-1):
+        count += 1
+        pre = pre.next
+      # 先将新节点node的next指向插入位置的节点
+      node.next = pre.next
+      # 将插入位置的前一个节点的next指向新节点
+      pre.next = node
+      #不是pre = node，是pre节点的next区域变成node 
+
+  def search(self,  item):
+    &amp;quot;查找节点是否存在，并返回True或者False&amp;quot;
+    node = SingleNode(item)
+    cur = self.__head
+    while cur != None:
+      if cur == node:
+        return True
+      else:
+        cur = cur.next
+    return False
+
+  def remove(self, item): 
+    &amp;quot;删除节点&amp;quot;
+    cur = self.__head
+    pre = None
+
+    while cur != None:
+      if cur.item == item:
+        # 如果第一个就是删除的节点
+        if cur == self.__head:
+          # 将头指针指向头节点的后一个节点
+          self.__head = cur.next
+        else:
+          # 将删除位置前一个节点的next指向删除位置的后一个节点
+          pre.next = cur.next
+        break
+      else:
+        pre = cur
+        cur = cur.next
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;#----测试-----
+# 节点
+class SingleNode(object):
+  &amp;quot;&amp;quot;&amp;quot;单链表的结点&amp;quot;&amp;quot;&amp;quot;
+  def __init__(self, item):
+    # item存放数据元素
+    self.item = item
+    # next是下一个节点的标识,因未知所以设为空None
+    self.next = None
+
+
+# 单链表
+class SingleLinkList(object):
+  &amp;quot;单链表&amp;quot;
+  def __init__(self, node=None):
+    &amp;quot;链表头&amp;quot;
+    self.__head = None
+  #_表示私有
+
+  def is_empty(self): 
+    &amp;quot;链表是否为空&amp;quot;
+    return self.__head == None
+    #将head是否指向None作为return的结果
+
+  def length(self): 
+    &amp;quot;链表长度&amp;quot;
+    # cur初始时指向头节点，用来移动遍历节点
+    cur = self.__head
+    count = 0
+    # 尾节点指向None，当未到达尾部时
+    while cur != None:
+        count += 1
+        # 将cur后移一个节点
+        cur = cur.next
+    return count
+
+  def travel(self): 
+    &amp;quot;遍历整个链表&amp;quot;
+    cur = self.__head
+    while cur != None:
+      print(cur.item, end=&amp;quot; &amp;quot;)
+      cur = cur.next
+    print(&amp;quot;&amp;quot;)
+
+  def append(self, item):
+    &amp;quot;链表尾部添加元素&amp;quot;
+    node = SingleNode(item)
+    # 先判断链表是否为空，若是空链表，则将_head指向新节点node
+    if self.is_empty():
+      self.__head = node
+    # 若不为空，则找到尾部，将尾节点的next指向新节点
+    else:
+      cur = self.__head
+      while cur.next != None:
+        cur = cur.next
+      cur.next = node
+
+  def add(self, item): 
+    &amp;quot;链表头部添加元素&amp;quot;
+    # 先创建一个保存item值的节点
+    node = SingleNode(item)
+    # 将新节点的链接域next指向头节点，即_head指向的位置
+    node.next = self.__head
+    # 将链表的头_head指向新节点
+    self.__head = node
+
+  def insert(self, pos, item): 
+    &amp;quot;指定位置添加元素&amp;quot;
+    if pos &amp;lt;= 0:
+      self.add(item)
+    elif pos &amp;gt; (self.length()-1):
+      self.append(item)
+    else:
+      node = SingleNode(item)
+      # pre用来指向指定位置pos的前一个位置pos-1，初始从头节点开始移动到指定位置
+      pre = self.__head
+      count = 0
+      while count &amp;lt; (pos-1):
+        count += 1
+        pre = pre.next
+      # 先将新节点node的next指向插入位置的节点
+      node.next = pre.next
+      # 将插入位置的前一个节点的next指向新节点
+      pre.next = node
+      #不是pre = node，是pre节点的next区域变成node 
+
+  def search(self,  item):
+    &amp;quot;查找节点是否存在，并返回True或者False&amp;quot;
+    cur = self.__head
+    while cur != None:
+      if cur.item == item:
+        return True
+      else:
+        cur = cur.next
+    return False
+
+  def remove(self, item): 
+    &amp;quot;删除节点&amp;quot;
+    cur = self.__head
+    pre = None
+
+    while cur != None:
+      if cur.item == item:
+        # 如果第一个就是删除的节点
+        if cur == self.__head:
+          # 将头指针指向头节点的后一个节点
+          self.__head = cur.next
+        else:
+          # 将删除位置前一个节点的next指向删除位置的后一个节点
+          pre.next = cur.next
+        break
+      else:
+        pre = cur
+        cur = cur.next
+
+
+#测试
+if __name__ == &amp;quot;__main__&amp;quot;:
+    ll = SingleLinkList()
+    print(ll.is_empty())
+    print(ll.length())
+
+    ll.append(1)
+    print(ll.is_empty())
+    print(ll.length())
+    ll.add(9)
+    ll.append(2)
+    ll.append(3)
+    ll.append(4)
+    ll.insert(-1,100)
+    ll.travel()
+    ll.insert(100,200)
+    ll.travel()
+    ll.insert(3,8)
+    ll.travel()
+    ll.search(100)
+    ll.remove(100)
+    ll.travel()
+    ll.remove(1)
+    ll.travel()
+    ll.remove(200)
+    ll.travel()
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;True
+0
+False
+1
+100 9 1 2 3 4 
+100 9 1 2 3 4 200 
+100 9 1 8 2 3 4 200 
+9 1 8 2 3 4 200 
+9 8 2 3 4 200 
+9 8 2 3 4 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;链表与顺序表的对比&#34;&gt;链表与顺序表的对比&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;操作&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;链表&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;顺序表&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;访问元素 search&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;O(n)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;O(1)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;在头部插入/删除 add&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;O(1)&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;O(n)&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;在尾部插入/删除 append&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;O(n)&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;O(1)&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;在中间插入/删除 insert&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;O(n)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;O(n)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;while循环：O(n), 链表只记录头节点，访问需要遍历&lt;/p&gt;
+&lt;p&gt;注意虽然表面看起来复杂度都是 O(n)，但是链表和顺序表在插入和删除时进行的是完全不同的操作。链表的主要耗时操作是遍历查找，删除和插入操作本身的复杂度是O(1)。顺序表查找很快，主要耗时的操作是拷贝覆盖。因为除了目标元素在尾部的特殊情况，顺序表进行插入和删除时需要对操作点之后的所有元素进行前后移位操作，只能通过拷贝和覆盖的方法进行。&lt;/p&gt;
+&lt;p&gt;顺序表：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：存取元素的时候复杂度O(1)，一次性并类&lt;/li&gt;
+&lt;li&gt;缺点：需要连续的整块内存&lt;/li&gt;
+&lt;li&gt;在中间插入/删除 insert O(n):花费在数据搬迁&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;链表：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：可以使用分散的可用内存&lt;/li&gt;
+&lt;li&gt;缺点：储存空间需要更大，除了原有数据还要存地址指针，存取元素的时候复杂度O(n)&lt;/li&gt;
+&lt;li&gt;在中间插入/删除 insert O(n):花费在遍历&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;双向链表&#34;&gt;双向链表&lt;/h2&gt;
+&lt;h3 id=&#34;双向链表结构分析&#34;&gt;双向链表结构分析&lt;/h3&gt;
+&lt;p&gt;一种更复杂的链表是“双向链表”或“双面链表”。每个节点有两个链接：一个指向前一个节点，当此节点为第一个节点时，指向空值；而另一个指向下一个节点，当此节点为最后一个节点时，指向空值。&lt;/p&gt;
+&lt;p&gt;除了后继节点：.next, 多一个前驱节点：.prev&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/15.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;双链表操作&#34;&gt;双链表操作&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;is_empty() 链表是否为空&lt;br&gt;
+length() 链表长度&lt;br&gt;
+travel() 遍历链表&lt;br&gt;
+add(item) 链表头部添加&lt;br&gt;
+append(item) 链表尾部添加&lt;br&gt;
+insert(pos, item) 指定位置添加&lt;br&gt;
+remove(item) 删除节点&lt;br&gt;
+search(item) 查找节点是否存在&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;# 节点实现
+
+class Node(object):
+  &amp;quot;&amp;quot;&amp;quot;双链表的结点&amp;quot;&amp;quot;&amp;quot;
+  def __init__(self, item):
+    # item存放数据元素
+    self.item = item
+    # 后继节点 next
+    self.next = None
+    #前驱节点 prev
+    self.prev = None
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;# 双向链表的实现
+
+class DoubleLinkList(object):
+  &amp;quot;双链表&amp;quot;
+  def __init__(self, node=None):
+    &amp;quot;链表头&amp;quot;
+    self.__head = None
+
+  def is_empty(self): 
+    &amp;quot;链表是否为空--一样&amp;quot;
+    return self.__head is None
+    #将head是否指向None作为return的结果
+
+  def length(self): 
+    &amp;quot;链表长度--一样&amp;quot;
+    # cur初始时指向头节点，用来移动遍历节点
+    cur = self.__head
+    count = 0
+    # 尾节点指向None，当未到达尾部时
+    while cur != None:
+        count += 1
+        # 将cur后移一个节点
+        cur = cur.next
+    return count
+
+  def travel(self): 
+    &amp;quot;遍历整个链表--一样&amp;quot;
+    cur = self.__head
+    while cur != None:
+      print(cur.item, end=&amp;quot; &amp;quot;)
+      cur = cur.next
+    print(&amp;quot;&amp;quot;)
+
+  def search(self,  item):
+    &amp;quot;查找节点是否存在，并返回True或者False--一样&amp;quot;
+    cur = self.__head
+    while cur != None:
+      if cur.item == item:
+        return True
+      else:
+        cur = cur.next
+    return False
+
+#-----有变化----
+
+  def append(self, item):
+    &amp;quot;链表尾部添加元素&amp;quot;
+    node = Node(item)
+    # 先判断链表是否为空，若是空链表，则将_head指向新节点node
+    if self.is_empty():
+      self.__head = node
+    # 若不为空，则找到尾部，将尾节点的next指向新节点
+    else:
+      cur = self.__head
+      while cur.next != None:
+        cur = cur.next
+      cur.next = node
+      node.prev = cur
+
+  def add(self, item): 
+    &amp;quot;链表头部添加元素&amp;quot;
+      # 先判断链表是否为空，若是空链表，则将_head指向新节点node
+    if self.is_empty():
+      self.__head = node
+    else:
+      # 先创建一个保存item值的节点
+      node = Node(item)
+      # 将新节点的链接域next指向头节点，即_head指向的位置
+      node.next = self.__head
+      # 将链表的头_head指向新节点
+      self.__head = node
+      node.next.prev = node
+
+#---也可以是这样：2-3注意循序
+# node.next = self.__head
+# self.__head.prev= node
+# self.__head = node
+
+#def add(self, item):
+#    &amp;quot;&amp;quot;&amp;quot;头部插入元素&amp;quot;&amp;quot;&amp;quot;
+#    node = Node(item)
+#    if self.is_empty():
+#        # 如果是空链表，将_head指向node
+#        self.__head = node
+#    else:
+#        # 将node的next指向_head的头节点
+#        node.next = self.__head
+#        # 将_head的头节点的prev指向node
+#        self.__head.prev = node
+#        # 将_head 指向node
+#        self.__head = node
+
+  def insert(self, pos, item): 
+    &amp;quot;指定位置添加元素&amp;quot;
+    if pos &amp;lt;= 0:
+      self.add(item)
+    elif pos &amp;gt; (self.length()-1):
+      self.append(item)
+    else:
+      node = Node(item)
+      cur = self.__head
+      #cur指向pos位置
+      count = 0
+      while count &amp;lt; pos:
+        count += 1
+        cur = cur.next
+      # 将node的next指向cur
+      node.next = cur
+      # 将node的prev指向cur的prev
+      node.prev = cur.prev
+      # 将cur的prev的指向node
+      cur.prev = node 
+      # 将cur的prev的下一个节点指向node
+      cur.prev.next = node
+      
+
+  def remove(self, item): 
+    &amp;quot;删除节点&amp;quot;
+    cur = self.__head
+ 
+    while cur != None:
+      # 找到了要删除的元素
+      if cur.item == item:
+        # 先判断此结点是否是首节点
+        if cur == self.__head:
+          # 删除首节点
+          self.__head = cur.next
+          if cur.next:
+            # 判断链表是否只有一个节点，即cur.next != None
+            cur.next.prev = None
+
+        else:
+          # 删除非首节点（一般情况）
+          cur.prev.next = cur.next
+          if cur.next:
+            # 判断链表是否是最后一个节点
+            cur.next.prev = cur.prev
+        break
+      else:
+        cur = cur.next
+
+
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;#----测试----
+
+# 节点实现
+
+class Node(object):
+  &amp;quot;&amp;quot;&amp;quot;双链表的结点&amp;quot;&amp;quot;&amp;quot;
+  def __init__(self, item):
+    # item存放数据元素
+    self.item = item
+    # 后继节点 next
+    self.next = None
+    #前驱节点 prev
+    self.prev = None
+
+# 双向链表的实现
+
+class DoubleLinkList(object):
+  &amp;quot;双链表&amp;quot;
+  def __init__(self,node=None):
+    &amp;quot;链表头&amp;quot;
+    self.__head = None
+
+  def is_empty(self): 
+    &amp;quot;链表是否为空--一样&amp;quot;
+    return self.__head is None
+    #将head是否指向None作为return的结果
+
+  def length(self): 
+    &amp;quot;链表长度--一样&amp;quot;
+    # cur初始时指向头节点，用来移动遍历节点
+    cur = self.__head
+    count = 0
+    # 尾节点指向None，当未到达尾部时
+    while cur != None:
+        count += 1
+        # 将cur后移一个节点
+        cur = cur.next
+    return count
+
+  def travel(self): 
+    &amp;quot;遍历整个链表--一样&amp;quot;
+    cur = self.__head
+    while cur != None:
+      print(cur.item, end=&amp;quot; &amp;quot;)
+      cur = cur.next
+    print(&amp;quot;&amp;quot;)
+
+  def search(self,  item):
+    &amp;quot;查找节点是否存在，并返回True或者False--一样&amp;quot;
+    cur = self.__head
+    while cur != None:
+      if cur.item == item:
+        return True
+      else:
+        cur = cur.next
+    return False
+
+#-----有变化----
+
+  def append(self, item):
+    &amp;quot;链表尾部添加元素&amp;quot;
+    node = Node(item)
+    # 先判断链表是否为空，若是空链表，则将_head指向新节点node
+    if self.is_empty():
+      self.__head = node
+    # 若不为空，则找到尾部，将尾节点的next指向新节点
+    else:
+      cur = self.__head
+      while cur.next != None:
+        cur = cur.next
+      cur.next = node
+      node.prev = cur
+
+  def add(self, item): 
+    &amp;quot;链表头部添加元素&amp;quot;
+      # 先判断链表是否为空，若是空链表，则将_head指向新节点node
+    if self.is_empty():
+      self.__head = node
+    else:
+      # 先创建一个保存item值的节点
+      node = Node(item)
+      # 将新节点的链接域next指向头节点，即_head指向的位置
+      node.next = self.__head
+      # 将链表的头_head指向新节点
+      self.__head = node
+      node.next.prev = node
+
+#---也可以是这样：2-3注意循序
+# node.next = self.__head
+# self.__head.prev= node
+# self.__head = node
+
+#def add(self, item):
+#    &amp;quot;&amp;quot;&amp;quot;头部插入元素&amp;quot;&amp;quot;&amp;quot;
+#    node = Node(item)
+#    if self.is_empty():
+#        # 如果是空链表，将_head指向node
+#        self.__head = node
+#    else:
+#        # 将node的next指向_head的头节点
+#        node.next = self.__head
+#        # 将_head的头节点的prev指向node
+#        self.__head.prev = node
+#        # 将_head 指向node
+#        self.__head = node
+
+  def insert(self, pos, item): 
+    &amp;quot;指定位置添加元素&amp;quot;
+    if pos &amp;lt;= 0:
+      self.add(item)
+    elif pos &amp;gt; (self.length()-1):
+      self.append(item)
+    else:
+      node = Node(item)
+      cur = self.__head
+      #cur指向pos位置
+      count = 0
+      while count &amp;lt; pos:
+        count += 1
+        cur = cur.next
+      # 将node的next指向cur
+      node.next = cur
+      # 将node的prev指向cur的prev
+      node.prev = cur.prev
+      # 将cur的prev的指向node
+      cur.prev = node 
+      # 将cur的prev的下一个节点指向node
+      cur.prev.next = node
+      
+
+  def remove(self, item): 
+    &amp;quot;删除节点&amp;quot;
+    cur = self.__head
+ 
+    while cur != None:
+      # 找到了要删除的元素
+      if cur.item == item:
+        # 先判断此结点是否是首节点
+        if cur == self.__head:
+          # 删除首节点
+          self.__head = cur.next
+          if cur.next:
+            # 判断链表是否只有一个节点，即cur.next != None
+            cur.next.prev = None
+
+        else:
+          # 删除非首节点（一般情况）
+          cur.prev.next = cur.next
+          if cur.next:
+            # 判断链表是否是最后一个节点
+            cur.next.prev = cur.prev
+        break
+      else:
+        cur = cur.next
+
+
+#测试
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    dll = DoubleLinkList()
+    print(dll.is_empty())
+    print(dll.length())
+
+    dll.append(1)
+    print(dll.is_empty())
+    print(dll.length())
+    dll.add(9)
+    dll.append(2)
+    dll.append(3)
+    dll.append(4)
+    dll.insert(-1,100)
+    dll.travel()
+    dll.insert(100,200)
+    dll.travel()
+    dll.insert(3,8)
+    dll.travel()
+    dll.search(100)
+    dll.remove(100)
+    dll.travel()
+    dll.remove(1)
+    dll.travel()
+    dll.remove(200)
+    dll.travel()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;True
+0
+False
+1
+100 9 1 2 3 4 
+100 9 1 2 3 4 200 
+100 9 1 2 3 4 200 
+9 1 2 3 4 200 
+9 2 3 4 200 
+9 2 3 4 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;单向循环链表&#34;&gt;单向循环链表&lt;/h2&gt;
+&lt;h3 id=&#34;单向循环链表的结构&#34;&gt;单向循环链表的结构&lt;/h3&gt;
+&lt;p&gt;单链表的一个变形是单向循环链表，链表中最后一个节点的next域不再为None，而是指向链表的头节点。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/18.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;单向循环链表的操作&#34;&gt;单向循环链表的操作&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;is_empty() 链表是否为空&lt;br&gt;
+length() 链表长度&lt;br&gt;
+travel() 遍历整个链表&lt;br&gt;
+add(item) 链表头部添加元素&lt;br&gt;
+append(item) 链表尾部添加元素&lt;br&gt;
+insert(pos, item) 指定位置添加元素&lt;br&gt;
+remove(item) 删除节点&lt;br&gt;
+search(item) 查找节点是否存在&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;#----code含测试-----
+# 节点
+class SingleNode(object):
+  def __init__(self, item):
+    self.item = item
+    self.next = None
+
+
+# 单向循环链表
+class SinCycLinkedList(object):
+  &amp;quot;单向循环链表&amp;quot;
+  def __init__(self, node=None):
+    self.__head = None
+    if node:
+    # 判断node是否是None
+      node.next = node
+
+  def is_empty(self): 
+    &amp;quot;链表是否为空--一样&amp;quot;
+    return self.__head == None
+    # 将head是否指向None作为return的结果
+
+  def length(self): 
+    &amp;quot;链表长度&amp;quot;
+    # 如果链表为空，返回长度0
+    if self.is_empty():
+      return 0
+
+    cur = self.__head
+    count = 1
+    while cur.next != self.__head:
+        count += 1
+        cur = cur.next
+    return count
+
+  def travel(self): 
+    &amp;quot;遍历整个链表&amp;quot;
+    if self.is_empty():
+      # 空链表，退出不做任何操作
+      return
+    cur = self.__head
+    while cur.next != self.__head:
+      print(cur.item, end=&amp;quot; &amp;quot;)
+      cur = cur.next
+    # 退出循环，cur指向尾节点，但是未被打印
+    print(cur.item)
+    print(&amp;quot;&amp;quot;)
+
+  def add(self, item): 
+    &amp;quot;链表头部添加元素&amp;quot;
+    node = SingleNode(item)
+    if self.is_empty():
+      self.__head = node
+      node.next = node
+    else:
+      cur = self.__head
+      while cur.next != self.__head:
+        cur = cur.next
+      # 将新节点的链接域next指向头节点，即_head指向的位置
+      node.next = self.__head
+      # 将链表的头_head指向新节点
+      self.__head = node
+      cur.next = node
+
+  def append(self, item):
+    &amp;quot;链表尾部添加元素&amp;quot;
+    node = SingleNode(item)
+    if self.is_empty():
+      self.__head = node
+      node.next = node
+    else:
+      cur = self.__head
+      while cur.next != self.__head:
+        cur = cur.next
+      cur.next = node
+      node.next = self.__head
+
+  def insert(self, pos, item): 
+    &amp;quot;指定位置添加元素--一样&amp;quot;
+    if pos &amp;lt;= 0:
+      self.add(item)
+    elif pos &amp;gt; (self.length()-1):
+      self.append(item)
+    else:
+      node = SingleNode(item)
+      # pre用来指向指定位置pos的前一个位置pos-1，初始从头节点开始移动到指定位置
+      pre = self.__head
+      count = 0
+      while count &amp;lt; (pos-1):
+        count += 1
+        pre = pre.next
+      # 先将新节点node的next指向插入位置的节点
+      node.next = pre.next
+      # 将插入位置的前一个节点的next指向新节点
+      pre.next = node
+      #不是pre = node，是pre节点的next区域变成node 
+
+  def search(self,  item):
+    &amp;quot;查找节点是否存在，并返回True或者False&amp;quot;
+    if self.is_empty():
+      return False
+    cur = self.__head
+    if cur.item == item: 
+      return True
+    while cur.next != self.__head:
+      if cur.item == item:
+        return True
+      else:
+        cur = cur.next
+    # 退出循环，cur指向尾节点
+    return False
+
+  def remove(self, item): 
+    &amp;quot;删除节点&amp;quot;
+    if self.is_empty():
+      return
+
+    cur = self.__head
+    pre = None
+
+    while cur.next != self.__head:
+      if cur.item == item:
+        if cur == self.__head: 
+          # 头节点
+          rear = self.__head #找尾节点
+          while rear.next != self.__head:
+            rear = rear.next
+          self.__head = cur.next
+          rear.next = self.__head
+        else:
+          # 中间节点
+          pre.next = cur.next
+        return # 不是break
+        # break是跳出一层循环，continue是结束一趟循环
+      else:
+        pre = cur
+        cur = cur.next
+    # 退出循环，cur指向尾节点
+    if cur.item == item:
+      if cur == self.__head:
+      # 链表只有一个节点
+        self.__head = None   
+      else:
+        pre.next = cur.next
+        # 等于 pre.next = self.__head
+
+    
+#测试
+if __name__ == &amp;quot;__main__&amp;quot;:
+    ll = SinCycLinkedList()
+    print(ll.is_empty())
+    print(ll.length())
+
+    ll.append(1)
+    print(ll.is_empty())
+    print(ll.length())
+    ll.add(9)
+    ll.append(2)
+    ll.append(3)
+    ll.append(4)
+    ll.insert(-1,100)
+    ll.travel()
+    ll.insert(100,200)
+    ll.travel()
+    ll.insert(3,8)
+    ll.travel()
+    ll.search(1000)
+  
+    ll.remove(100)
+    ll.travel()
+    ll.remove(1)
+    ll.travel()
+    ll.remove(200)
+    ll.travel()
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;True
+0
+False
+1
+100 9 1 2 3 4
+
+100 9 1 2 3 4 200
+
+100 9 1 8 2 3 4 200
+
+9 1 8 2 3 4 200
+
+9 8 2 3 4 200
+
+9 8 2 3 4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;栈线性表的区别：栈描述怎么操作，线性表描述怎么存放&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;栈和队列（下一节）：这两种数据结构不用考虑他们在物理上是怎样储存的， 只需要关心&lt;strong&gt;支持什么样的操作，操作有什么特点&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&#34;栈-stack&#34;&gt;栈 Stack&lt;/h1&gt;
+&lt;p&gt;栈（stack），有些地方称为堆栈，是一种容器，可存入数据元素、访问元素、删除元素，它的特点在于只能允许在容器的一端（称为栈顶端指标，英语：top）进行加入数据（英语：push）和输出数据（英语：pop）的运算。没有了位置概念，保证任何时候可以访问、删除的元素都是此前最后存入的那个元素，确定了一种默认的访问顺序。&lt;/p&gt;
+&lt;p&gt;由于栈数据结构只允许在一端进行操作，因而按照后进先出“最后一个进来的第一个先出去”（LIFO, Last In First Out）的原理运作。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/19.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;像是一个杯子，只有一个口：先加的跑到杯底，倒出的时候杯口先出来&lt;/p&gt;
+&lt;h2 id=&#34;栈结构和实现&#34;&gt;栈结构和实现&lt;/h2&gt;
+&lt;h3 id=&#34;栈的操作&#34;&gt;栈的操作&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Stack() 创建一个新的空栈&lt;br&gt;
+push(item) 添加一个新的元素item到栈顶&lt;br&gt;
+pop() 弹出栈顶元素&lt;br&gt;
+peek() 返回栈顶元素&lt;br&gt;
+is_empty() 判断栈是否为空&lt;br&gt;
+size() 返回栈的元素个数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;class Stack(object):
+    &amp;quot;栈&amp;quot;
+    def __init__(self):
+         self.items = []
+
+    def is_empty(self):
+        &amp;quot;判断是否为空&amp;quot;
+        return self.items == []
+        # return not self.item
+#逻辑上为假: &amp;quot;&amp;quot;, [], {},(),
+
+    def push(self, item):
+        &amp;quot;加入元素&amp;quot;
+        self.items.append(item)
+
+    def pop(self):
+        &amp;quot;弹出元素&amp;quot;
+        return self.items.pop()
+
+    def peek(self):
+        &amp;quot;返回栈顶元素&amp;quot;
+        if self.items:
+          return self.items[len(self.items)-1]
+        else:
+          return None
+    def size(self):
+        &amp;quot;返回栈的大小&amp;quot;
+        return len(self.items)
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    stack = Stack()
+    stack.push(&amp;quot;hello&amp;quot;)
+    stack.push(&amp;quot;world&amp;quot;)
+    stack.push(&amp;quot;itcast&amp;quot;)
+    print(stack.size())
+    print(stack.peek())
+    print(stack.pop())
+    print(stack.pop())
+    print(stack.pop())
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;3
+itcast
+itcast
+world
+hello
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;队列&#34;&gt;队列&lt;/h1&gt;
+&lt;p&gt;队列（queue）是只允许在一端进行插入操作，而在另一端进行删除操作的线性表。&lt;/p&gt;
+&lt;p&gt;队列是一种先进先出的（First In First Out）的线性表，简称FIFO。允许插入的一端为队尾，允许删除的一端为队头。队列不允许在中间部位进行操作！假设队列是q=（a1，a2，……，an），那么a1就是队头元素，而an是队尾元素。这样我们就可以删除时，总是从a1开始，而插入时，总是在队列最后。这也比较符合我们通常生活中的习惯，排在第一个的优先出列，最后来的当然排在队伍最后。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/20.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;操作&#34;&gt;操作&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Queue() 创建一个空的队列&lt;br&gt;
+enqueue(item) 往队列中添加一个item元素&lt;br&gt;
+dequeue() 从队列头部删除一个元素&lt;br&gt;
+is_empty() 判断一个队列是否为空&lt;br&gt;
+size() 返回队列的大小&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;class Queue(object):
+    &amp;quot;队列&amp;quot;
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        return self.items == []
+
+    def enqueue(self, item):
+        &amp;quot;进队列&amp;quot;
+        self.items.insert(0,item)# 尾部添加
+        #self.item.append(item) # 头部添加
+    def dequeue(self):
+        &amp;quot;出队列&amp;quot;
+        return self.items.pop() # 尾部弹出
+        # return self.items.pop(0) # 头部弹出
+    def size(self):
+        &amp;quot;返回大小&amp;quot;
+        return len(self.items)
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    q = Queue()
+    q.enqueue(&amp;quot;hello&amp;quot;)
+    q.enqueue(&amp;quot;world&amp;quot;)
+    q.enqueue(&amp;quot;itcast&amp;quot;)
+    print(q.size())
+    print(q.dequeue())
+    print(q.dequeue())
+    print(q.dequeue())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;3
+hello
+world
+itcast
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;双端队列&#34;&gt;双端队列&lt;/h2&gt;
+&lt;p&gt;双端队列（deque，全名double-ended queue），是一种具有队列和栈的性质的数据结构。&lt;/p&gt;
+&lt;p&gt;双端队列中的元素可以从两端弹出，其限定插入和删除操作在表的两端进行。双端队列可以在队列任意一端入队和出队。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/22.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;双端队列：相当于两个栈底部合到一起&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;操作-1&#34;&gt;操作&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Deque() 创建一个空的双端队列&lt;br&gt;
+add_front(item) 从队头加入一个item元素&lt;br&gt;
+add_rear(item) 从队尾加入一个item元素&lt;br&gt;
+remove_front() 从队头删除一个item元素&lt;br&gt;
+remove_rear() 从队尾删除一个item元素&lt;br&gt;
+is_empty() 判断双端队列是否为空&lt;br&gt;
+size() 返回队列的大小&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;return 会直接另函数返回，函数就运行结束了，所有该函数体内的代码都不再执行了，所以该函数体内的循环也不可能再继续运行。&lt;/p&gt;
+&lt;p&gt;如果你需要让循环继续执行，就不能return函数，而应该选用break或者continue。&lt;/p&gt;
+&lt;p&gt;break：跳出所在的当前整个循环，到外层代码继续执行。&lt;/p&gt;
+&lt;p&gt;continue：跳出本次循环，从下一个迭代继续运行循环，内层循环执行完毕，外层代码继续运行。&lt;/p&gt;
+&lt;p&gt;return：直接返回函数，所有该函数体内的代码（包括循环体）都不会再执行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Deque(object):
+    &amp;quot;双端队列&amp;quot;
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        &amp;quot;判断队列是否为空&amp;quot;
+        return self.items == []
+
+    def add_front(self, item):
+        &amp;quot;在队头添加元素&amp;quot;
+        self.items.insert(0,item)
+
+    def add_rear(self, item):
+        &amp;quot;在队尾添加元素&amp;quot;
+        self.items.append(item)
+
+    def remove_front(self):
+        &amp;quot;从队头删除元素&amp;quot;
+        return self.items.pop(0)
+
+    def remove_rear(self):
+        &amp;quot;从队尾删除元素&amp;quot;
+        return self.items.pop()
+
+    def size(self):
+        &amp;quot;返回队列大小&amp;quot;
+        return len(self.items)
+
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    deque = Deque()
+    deque.add_front(1)
+    deque.add_front(2)
+    deque.add_rear(3)
+    deque.add_rear(4)
+    print(deque.size())
+    print(&amp;quot;deque:&amp;quot;, 2, 1, 3, 4)
+    print(deque.remove_front())
+    print(deque.remove_front())
+    print(deque.remove_rear())
+    print(deque.remove_rear())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;4
+deque: 2 1 3 4
+2
+1
+4
+3
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>04 排序与搜索</title>
+      <link>https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/04/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/04/</guid>
+      <description>&lt;h1 id=&#34;排序算法的稳定性&#34;&gt;排序算法的稳定性&lt;/h1&gt;
+&lt;p&gt;排序算法（英语：Sorting algorithm）是一种能将一串数据依照特定顺序进行排列的一种算法。&lt;/p&gt;
+&lt;p&gt;稳定性：稳定排序算法会让原本有相等键值的纪录维持相对次序。也就是如果一个排序算法是稳定的，当有两个相等键值的纪录R和S，且在原本的列表中R出现在S之前，在排序过的列表中R也将会是在S之前。&lt;/p&gt;
+&lt;p&gt;当相等的元素是无法分辨的，比如像是整数，稳定性并不是一个问题。然而，假设以下的数对将要以他们的第一个数字来排序。&lt;/p&gt;
+&lt;h2 id=&#34;常见排序算法效率比较&#34;&gt;常见排序算法效率比较&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/31.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;冒泡排序-bubble-sort&#34;&gt;冒泡排序 Bubble Sort&lt;/h2&gt;
+&lt;p&gt;冒泡排序算法的运作如下：&lt;/p&gt;
+&lt;p&gt;比较相邻的元素。如果第一个比第二个大（升序），就交换他们两个。
+对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，&lt;strong&gt;最后的元素会是最大的数&lt;/strong&gt;。
+针对所有的元素重复以上的步骤，除了最后一个。
+持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/23.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def bubble_sort(alist):
+  #自己写的！
+    for j in range(len(alist)-1, 0, -1):
+      for i in range(j):
+        if alist[i] &amp;gt; alist[i+1]:
+          alist[i], alist[i+1] = alist[i+1], alist[i]
+        
+li = [54,26,93,17,77,31,44,55,20]
+bubble_sort(li)
+print(li)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[17, 20, 26, 31, 44, 54, 55, 77, 93]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;#优化：如果给的就是从大到小排好的数列
+def bubble_sort(alist):
+    for j in range(len(alist)-1,0,-1):
+        # j表示每次遍历需要比较的次数，是逐渐减小的
+        count = 0
+        for i in range(j):
+            if alist[i] &amp;gt; alist[i+1]:
+                alist[i], alist[i+1] = alist[i+1], alist[i]
+                count += 1
+        if count == 0:
+          return alist
+
+
+li = [1,2,3,4,5]
+bubble_sort(li)
+print(li)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1, 2, 3, 4, 5]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;时间复杂度&#34;&gt;时间复杂度&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;最优时间复杂度：O(n)&lt;/li&gt;
+&lt;li&gt;最坏时间复杂度：O($n^2$)&lt;/li&gt;
+&lt;li&gt;稳定性：稳定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;选择排序selection-sort&#34;&gt;选择排序（Selection sort）&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/24.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def selection_sort(alist):
+    n = len(alist)
+    # 需要进行n-1次选择操作
+    for i in range(n-1):
+        # 记录最小位置
+        min_index = i
+        # 从i+1位置到末尾选择出最小数据
+        for j in range(i+1, n):
+            if alist[j] &amp;lt; alist[min_index]:
+                min_index = j
+        # 如果选择出的数据不在正确位置，进行交换
+        if min_index != i:
+            alist[i], alist[min_index] = alist[min_index], alist[i]
+
+alist = [54,226,93,17,77,31,44,55,20]
+selection_sort(alist)
+print(alist)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;时间复杂度-1&#34;&gt;时间复杂度&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;最优时间复杂度：O($n^2$)&lt;/li&gt;
+&lt;li&gt;最坏时间复杂度：O($n^2$)&lt;/li&gt;
+&lt;li&gt;稳定性：不稳定（考虑升序每次选择最大的情况）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;li=[$10_1$, 4, 5, 7, $10_2$, 9] 每次选最大值排到队尾&lt;/p&gt;
+&lt;p&gt;排完：
+li=[4, 5, 7, 9, $10_2$,$10_1$]&lt;/p&gt;
+&lt;p&gt;$10_1$, $10_2$位置和原来的位置不一样了，故不稳定&lt;/p&gt;
+&lt;h2 id=&#34;插入排序insertion-sort&#34;&gt;插入排序（Insertion Sort）&lt;/h2&gt;
+&lt;p&gt;它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/25.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def insert_sort(alist):
+  for i in range(1, len(alist)):
+  # 从第二个位置，即下标为1的元素开始向前插入
+    for j in range(i, 0, -1):
+    # 从第i个元素开始向前比较，如果小于前一个元素，交换位置:
+    # i, i-1,i-2...1
+      if alist[j] &amp;lt; alist[j-1]:
+        alist[j], alist[j-1]  = alist[j-1], alist[j]
+
+alist = [54,26,93,17,77,31,44,55,20]
+insert_sort(alist)
+print(alist)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[17, 20, 26, 31, 44, 54, 55, 77, 93]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;# 优化
+def insert_sort(alist):
+  for i in range(1, len(alist)):
+  # 从第二个位置，即下标为1的元素开始向前插入
+    j = i
+    while j &amp;gt; 0:
+    # 从第i个元素开始向前比较，如果小于前一个元素，交换位置:
+    # i, i-1,i-2...1
+      if alist[j] &amp;lt; alist[j-1]:
+        alist[j], alist[j-1]  = alist[j-1], alist[j]
+        j -= 1
+      else:
+        break
+
+alist = [54,26,93,17,77,31,44,55,20]
+insert_sort(alist)
+print(alist)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[17, 20, 26, 31, 44, 54, 55, 77, 93]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;时间复杂度-2&#34;&gt;时间复杂度&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;最优时间复杂度：O(n) 升序排列，有序升序数列&lt;/li&gt;
+&lt;li&gt;最坏时间复杂度：O($n^2$)&lt;/li&gt;
+&lt;li&gt;稳定性：稳定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;希尔排序shell-sort&#34;&gt;希尔排序(Shell Sort)&lt;/h2&gt;
+&lt;p&gt;插入排序的一种。也称缩小增量排序，是直接插入排序算法的一种更高效的改进版本。希尔排序是非稳定排序算法。希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/28.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def shell_sort(alist):
+  &amp;quot;希尔排序&amp;quot;
+  n = len(alist)
+  gap = n // 2
+  while gap &amp;gt; 0: #gap==1 插入排序
+    #希尔和插入算法非常像，把i换为gap
+    for j in range(gap, n):
+      i = j
+      while i&amp;gt;0:
+        if alist[i] &amp;lt; alist[i - gap]:
+          alist[i], alist[i-gap] = alist[i-gap], alist[i]
+          i -= gap
+        else:
+          break
+  #缩短gap步长
+  gap //= 2  #/是精确除法，//是向下取整除法，%是求模
+
+alist = [54,26,93,17,77,31,44,55,20]
+insert_sort(alist)
+print(alist)
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[17, 20, 26, 31, 44, 54, 55, 77, 93]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;def insert_sort(alist):
+  &amp;quot;插入排序&amp;quot;
+  n = len(alist)
+  # 从右边无序序列去多少个元素执行这样的过程
+  for j in range(1, n):
+  # j = [1,2,3...,n-1],
+  # i 内层循环起始值
+    i = j
+    # 从第i个元素开始向前比较，如果小于前一个元素，交换位置:
+    while i &amp;gt;0:
+      if alist[i] &amp;lt; alist[i-1]:
+        alist[i], alist[i-1]  = alist[i-1], alist[i]
+        i -= 1
+      else:
+         break
+
+alist = [54,26,93,17,77,31,44,55,20]
+insert_sort(alist)
+print(alist)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[17, 20, 26, 31, 44, 54, 55, 77, 93]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;时间复杂度-3&#34;&gt;时间复杂度&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;最优时间复杂度：跟序列的不同而不同而不同&lt;/li&gt;
+&lt;li&gt;最坏时间复杂度：O($n^2$) ，即gap为1，插入排序&lt;/li&gt;
+&lt;li&gt;稳定性：不稳定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;快速排序quicksort必须掌握&#34;&gt;快速排序（Quicksort）必须掌握&lt;/h2&gt;
+&lt;p&gt;快速排序（英语：Quicksort），又称划分交换排序（partition-exchange sort），通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。&lt;/p&gt;
+&lt;p&gt;步骤为：&lt;/p&gt;
+&lt;p&gt;从数列中挑出一个元素，称为&amp;quot;基准&amp;rdquo;（pivot），
+重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。
+递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。
+递归的最底部情形，是数列的大小是零或一，也就是永远都已经被排序好了。虽然一直递归下去，但是这个算法总会结束，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.soong.site/datastructure/assets/27.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.breakyizhan.com/wp-content/uploads/2019/04/121659127078460.jpg&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://images2017.cnblogs.com/blog/1199607/201708/1199607-20170831232643983-1675647445.gif&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def quick_sort(alist, start, end):
+    &amp;quot;&amp;quot;&amp;quot;快速排序&amp;quot;&amp;quot;&amp;quot;
+
+    # 递归的退出条件
+    if start &amp;gt;= end:
+        return
+
+    # 设定起始元素为要寻找位置的基准元素
+    mid = alist[start]
+
+    # low为序列左边的由左向右移动的游标
+    low = start
+
+    # high为序列右边的由右向左移动的游标
+    high = end
+
+    while low &amp;lt; high:
+        # 如果low与high未重合，high指向的元素不比基准元素小，则high向左移动
+        while low &amp;lt; high and alist[high] &amp;gt;= mid:
+            high -= 1
+        # 将high指向的元素放到low的位置上
+        alist[low] = alist[high]
+
+        # 如果low与high未重合，low指向的元素比基准元素小，则low向右移动
+        while low &amp;lt; high and alist[low] &amp;lt; mid:
+            low += 1
+        # 将low指向的元素放到high的位置上
+        alist[high] = alist[low]
+
+    # 退出循环后，low与high重合，此时所指位置为基准元素的正确位置
+    # 将基准元素放到该位置
+    alist[low] = mid
+
+    # 对基准元素左边的子序列进行快速排序
+    quick_sort(alist, start, low-1)
+
+    # 对基准元素右边的子序列进行快速排序
+    quick_sort(alist, low+1, end)
+
+
+alist = [54,26,93,17,77,31,44,55,20]
+quick_sort(alist,0,len(alist)-1)
+print(alist)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[17, 20, 26, 31, 44, 54, 55, 77, 93]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;时间复杂度-4&#34;&gt;时间复杂度&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;最优时间复杂度：O($nlogn$)&lt;br&gt;
+横向n，纵向logn($2^x = n, x = logn$)&lt;/li&gt;
+&lt;li&gt;最坏时间复杂度：O($n^2$)&lt;br&gt;
+横向n，纵向n&lt;/li&gt;
+&lt;li&gt;稳定性：不稳定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;归并排序-merge-sort&#34;&gt;归并排序 merge sort&lt;/h2&gt;
+&lt;p&gt;归并排序是采用分治法的一个非常典型的应用。归并排序的思想就是先递归分解数组，再合并数组。&lt;/p&gt;
+&lt;p&gt;将数组分解最小之后，然后合并两个有序数组，基本思路是比较两个数组的最前面的数，谁小就先取谁，取了后相应的指针就往后移一位。然后再比较，直至一个数组为空，最后把另一个数组的剩余部分复制过来即可。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def merge_sort(alist):
+    &amp;quot;归并排序&amp;quot;
+    if len(alist) &amp;lt;= 1:
+        return alist
+    # 二分分解
+    num = len(alist)//2
+    left = merge_sort(alist[:num])
+    right = merge_sort(alist[num:])
+    # 合并
+    return merge(left,right)
+
+def merge(left, right):
+    &#39;&#39;&#39;合并操作，将两个有序数组left[]和right[]合并成一个大的有序数组&#39;&#39;&#39;
+    #left与right的下标指针
+    l, r = 0, 0
+    result = []
+    while l&amp;lt;len(left) and r&amp;lt;len(right):
+        if left[l] &amp;lt;= right[r]:#加上=情况，就稳定了
+            result.append(left[l])
+            l += 1
+        else:
+            result.append(right[r])
+            r += 1
+    result += left[l:]
+    result += right[r:]
+    return result
+
+alist = [54,26,93,17,77,31,44,55,20]
+sorted_alist = merge_sort(alist)
+print(sorted_alist)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[17, 20, 26, 31, 44, 54, 55, 77, 93]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;时间复杂度-5&#34;&gt;时间复杂度&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;最优时间复杂度：O($nlogn$)&lt;br&gt;
+横向logn($2^x = n, x = logn$)，纵向n&lt;/li&gt;
+&lt;li&gt;最坏时间复杂度：O($nlogn$)&lt;br&gt;
+需要额外 空间&lt;/li&gt;
+&lt;li&gt;稳定性：稳定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.breakyizhan.com/wp-content/uploads/2019/04/sort.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.breakyizhan.com/wp-content/uploads/2019/04/0B319B38-B70E-4118-B897-74EFA7E368F9.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;搜索-二分法&#34;&gt;搜索 二分法&lt;/h2&gt;
+&lt;p&gt;二分查找又称折半查找，优点是比较次数少，查找速度快，平均性能好；其缺点是要求待查表为有序表，且插入删除困难。因此，折半查找方法适用于不经常变动而查找频繁的有序列表。首先，假设表中元素是按升序排列，将表中间位置记录的关键字与查找关键字比较，如果两者相等，则查找成功；否则利用中间位置记录将表分成前、后两个子表，如果中间位置记录的关键字大于查找关键字，则进一步查找前一子表，否则进一步查找后一子表。重复以上过程，直到找到满足条件的记录，使查找成功，或直到子表不存在为止，此时查找不成功。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;只能作用在有序的顺序表&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def binary_search(alist, item):
+  &amp;quot;递归实现&amp;quot;
+  n = len(alist)
+
+  if n &amp;gt;0: 
+    mid =  n//2
+    if alist[mid] == item:
+      return True
+
+    elif alist[mid]&amp;gt;item:
+      return binary_search(alist[:mid], item)
+    else:
+      return binary_search(alist[mid+1:], item)
+  return False
+
+testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42]
+print(binary_search(testlist, 10))
+print(binary_search(testlist, 42))
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;False
+True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;def binary_search(alist, item):
+  &amp;quot;非递归实现&amp;quot;
+  n = len(alist)
+  first = 0
+  last = n-1
+  
+  while first&amp;lt;=last:
+    mid =  (first+last)//2 
+    # 不能放在while外层  
+    if alist[mid] == item:
+        return True
+    elif alist[mid]&amp;gt;item:
+        last = mid-1
+    else:
+        first = mid+1
+  return False
+
+
+testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42]
+print(binary_search(testlist, 10))
+print(binary_search(testlist, 42))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;False
+True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;def binary_search(alist, item):
+      first = 0
+      last = len(alist)-1
+      while first&amp;lt;=last:
+          midpoint = (first + last)//2
+          if alist[midpoint] == item:
+              return True
+          elif item &amp;lt; alist[midpoint]:
+              last = midpoint-1
+          else:
+              first = midpoint+1
+      return False
+testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]
+print(binary_search(testlist, 3))
+print(binary_search(testlist, 13))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;False
+True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;时间复杂度-6&#34;&gt;时间复杂度&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;最优时间复杂度：O(1)&lt;/li&gt;
+&lt;li&gt;最坏时间复杂度：O(logn)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>05 树与树算法</title>
+      <link>https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/05/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/05/</guid>
+      <description>&lt;h1 id=&#34;树与树算法&#34;&gt;树与树算法&lt;/h1&gt;
+&lt;h2 id=&#34;树&#34;&gt;树&lt;/h2&gt;
+&lt;p&gt;树（英语：tree）是一种抽象数据类型（ADT）或是实作这种抽象数据类型的数据结构，用来模拟具有树状结构性质的数据集合。它是由n（n&amp;gt;=1）个有限节点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的。它具有以下的特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个节点有零个或多个子节点；&lt;/li&gt;
+&lt;li&gt;没有父节点的节点称为根节点；&lt;/li&gt;
+&lt;li&gt;每一个非根节点有且只有一个父节点；&lt;/li&gt;
+&lt;li&gt;除了根节点外，每个子节点可以分为多个不相交的子树；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;image/34.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;树的术语&#34;&gt;树的术语&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;节点的度：一个节点含有的子树的个数称为该节点的度。 B的度：3, G的度：2&lt;br&gt;
+树的度：一棵树中，最大的节点的度称为树的度。 是B/C节点：3&lt;br&gt;
+叶节点或终端节点：度为零的节点。 K,G,F&lt;br&gt;
+父亲节点或父节点：若一个节点含有子节点，则这个节点称为其子节点的父节点。 E的父节点：B&lt;br&gt;
+孩子节点或子节点：一个节点含有的子树的根节点称为该节点的子节点。&lt;br&gt;
+兄弟节点：具有相同父节点的节点互称为兄弟节点。 D的兄弟节点：E，F&lt;br&gt;
+节点的层次：从根开始定义起，根为第1层，根的子节点为第2层，以此类推。 从上往下：A：1， BC：2， DEFGH：3，IJLMN：4，KOP：5&lt;br&gt;
+树的高度或深度：树中节点的最大层次。 最大是5&lt;br&gt;
+堂兄弟节点：父节点在同一层的节点互为堂兄弟。 即爷爷相同，BH互为堂兄弟&lt;br&gt;
+节点的祖先：从根到该节点所经分支上的所有节点。 O的祖先：ACGM&lt;br&gt;
+子孙：以某节点为根的子树中任一节点都称为该节点的子孙。G的子孙：LMO&lt;br&gt;
+森林：由m（m&amp;gt;=0）棵互不相交的树的集合称为森林；&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;###树的种类&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无序树：树中任意节点的子节点之间没有顺序关系，这种树称为无序树，也称为自由树；&lt;/li&gt;
+&lt;li&gt;有序树：树中任意节点的子节点之间有顺序关系，这种树称为有序树；
+&lt;ul&gt;
+&lt;li&gt;二叉树：每个节点最多含有两个子树的树称为二叉树；
+&lt;ul&gt;
+&lt;li&gt;完全二叉树：对于一颗二叉树，假设其深度为d(d&amp;gt;1)。除了第d层外，其它各层的节点数目均已达最大值，且第d层所有节点从左向右连续地紧密排列，这样的二叉树被称为完全二叉树，其中满二叉树的定义是所有叶节点都在最底层的完全二叉树;&lt;/li&gt;
+&lt;li&gt;平衡二叉树（AVL树）：当且仅当任何节点的两棵子树的高度差不大于1的二叉树；&lt;/li&gt;
+&lt;li&gt;排序二叉树（二叉查找树（英语：Binary Search Tree），也称二叉搜索树、有序二叉树）；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;霍夫曼树（用于信息编码）：带权路径最短的二叉树称为哈夫曼树或最优二叉树；&lt;/li&gt;
+&lt;li&gt;B树：一种对读写操作进行优化的自平衡的二叉查找树，能够保持数据有序，拥有多余两个子树。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;常见的一些树的应用场景&#34;&gt;常见的一些树的应用场景&lt;/h3&gt;
+&lt;p&gt;1.xml，html等，那么编写这些东西的解析器的时候，不可避免用到树&lt;/p&gt;
+&lt;p&gt;2.路由协议就是使用了树的算法&lt;/p&gt;
+&lt;p&gt;3.mysql数据库索引&lt;/p&gt;
+&lt;p&gt;4.文件系统的目录结构&lt;/p&gt;
+&lt;p&gt;5.所以很多经典的AI算法其实都是树搜索，此外机器学习中的decision tree也是树结构&lt;/p&gt;
+&lt;h2 id=&#34;二叉树&#34;&gt;二叉树&lt;/h2&gt;
+&lt;p&gt;二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）&lt;/p&gt;
+&lt;h3 id=&#34;二叉树的性质特性&#34;&gt;二叉树的性质(特性)&lt;/h3&gt;
+&lt;p&gt;性质1:在二叉树的第i层上至多有2^(i-1)个结点&lt;br&gt;
+性质2:深度为k的二叉树至多有2^k - 1个结点&lt;br&gt;
+性质3:对于任意一棵二叉树，如果其叶结点数为N0，而度数为2的结点总数为N2，则N0=N2+1;&lt;br&gt;
+性质4:具有n个结点的完全二叉树的深度必为 log2(n+1)&lt;br&gt;
+性质5:对完全二叉树，若从上至下、从左至右编号，则编号为i 的结点，其左孩子编号必为2i，其右孩子编号必为2i＋1；其双亲的编号必为i/2（i＝1 时为根,除外）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;image/37.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;image/38.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Node(object):
+    &amp;quot;节点类&amp;quot;
+    def __init__(self, elem=-1, lchild=None, rchild=None):
+        self.elem = elem
+        self.lchild = lchild
+        self.rchild = rchild  
+  
+
+class Tree(object):
+    &amp;quot;树类&amp;quot;
+    def __init__(self, root=None):
+        self.root = root
+
+    def add(self, elem):
+        &amp;quot;   为树添加节点&amp;quot;
+        node = Node(elem)
+        #如果树是空的，则对根节点赋值
+        if self.root == None:
+            self.root = node
+        else:
+            queue = []
+            queue.append(self.root)
+            #对已有的节点进行层次遍历
+            while queue:
+                #弹出队列的第一个元素
+                cur = queue.pop(0)
+                if cur.lchild == None:
+                    cur.lchild = node
+                    return
+                elif cur.rchild == None:
+                    cur.rchild = node
+                    return
+                else:
+                    #如果左右子树都不为空，加入队列继续判断
+                    queue.append(cur.lchild)
+                    queue.append(cur.rchild)
+
+    def breadth_travel(self):
+        &amp;quot;广度遍历&amp;quot;  
+
+        if self.root is None:
+          return
+
+        queue =[self.root]
+        
+        while queue:
+          cur_node = queue.pop(0)
+          print(cur_node.elem,end=&amp;quot; &amp;quot;)
+          if cur_node.lchild is not None:
+            queue.append(cur_node.lchild)
+          if cur_node.rchild is not None:
+            queue.append(cur_node.rchild)
+            
+    def preorder(self, node):
+      &amp;quot;递归实现先序遍历:根左右&amp;quot;
+      if node is None:
+        return
+      print(node.elem,end=&amp;quot; &amp;quot;)
+      self.preorder(node.lchild)
+      self.preorder(node.rchild)   
+
+    def inorder(self, node):
+      &amp;quot;递归实现中序遍历:左根右&amp;quot;
+      if node is None:
+        return
+      self.inorder(node.lchild)
+      print(node.elem,end=&amp;quot; &amp;quot;)
+      self.inorder(node.rchild)    
+
+    def postorder(self, node):
+      &amp;quot;递归实现后续遍历:左右根&amp;quot;
+      if node is None:
+        return
+      self.postorder(node.lchild)
+      self.postorder(node.rchild) 
+      print(node.elem, end=&amp;quot; &amp;quot;) 
+
+tree = Tree()
+tree.add(0)
+tree.add(1)
+tree.add(2)
+tree.add(3)
+tree.add(4)
+tree.add(5)
+tree.add(6)
+tree.add(7)
+tree.add(8)
+tree.add(9)
+tree.breadth_travel()
+print(&amp;quot;&amp;quot;)
+tree.preorder(tree.root)
+print(&amp;quot;&amp;quot;)
+tree.inorder(tree.root)
+print(&amp;quot;&amp;quot;)
+tree.postorder(tree.root)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;0 1 2 3 4 5 6 7 8 9 
+0 1 3 7 8 4 9 2 5 6 
+7 3 8 1 9 4 0 5 2 6 
+7 8 3 9 4 1 5 6 2 0 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;树的遍历&#34;&gt;树的遍历&lt;/h2&gt;
+&lt;p&gt;树的遍历是树的一种重要的运算。所谓遍历是指对树中所有结点的信息的访问，即依次对树中每个结点访问一次且仅访问一次，我们把这种对所有节点的访问称为遍历（traversal）。那么树的两种重要的遍历模式是深度优先遍历和广度优先遍历,&lt;strong&gt;深度优先一般用递归，广度优先一般用队列。一般情况下能用递归实现的算法大部分也能用堆栈来实现&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;深度遍历-必须会&#34;&gt;深度遍历 必须会&lt;/h3&gt;
+&lt;p&gt;对于一颗二叉树，深度优先搜索(Depth First Search)是沿着树的深度遍历树的节点，尽可能深的搜索树的分支。
+那么深度遍历有重要的三种方法。这三种方式常被用于访问树的节点，它们之间的不同在于访问每个节点的次序不同。这三种遍历分别叫做先序遍历（preorder），中序遍历（inorder）和后序遍历（postorder）。我们来给出它们的详细定义，然后举例看看它们的应用。
+&lt;img src=&#34;image/%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86%E7%BB%93%E6%9E%9C.jpg&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;先序遍历 在先序遍历中，我们先访问根节点，然后递归使用先序遍历访问左子树，再递归使用先序遍历访问右子树&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;根节点-&amp;gt;左子树-&amp;gt;右子树&lt;/p&gt;
+&lt;p&gt;前三个元素的话： 0-1-2&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;image/preorder.PNG&#34; alt=&#34;preorder&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def preorder(self, node):
+  &amp;quot;递归实现先序遍历:根左右&amp;quot;
+  if node is None:
+    return
+  print(node.elem)
+  self.preorder(node.lchild)
+  self.preorder(node.rchild)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;中序遍历 在中序遍历中，我们递归使用中序遍历访问左子树，然后访问根节点，最后再递归使用中序遍历访问右子树&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;左子树-&amp;gt;根节点-&amp;gt;右子树&lt;/p&gt;
+&lt;p&gt;前三个元素的话： 1-0-2&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def inorder(self, node):
+  &amp;quot;递归实现中序遍历:左根右&amp;quot;
+  if node is None:
+    return
+  self.inorder(node.lchild)
+  print(node.elem)
+  self.inorder(node.rchild)   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;后序遍历 在后序遍历中，我们先递归使用后序遍历访问左子树和右子树，最后访问根节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;左子树-&amp;gt;右子树-&amp;gt;根节点&lt;/p&gt;
+&lt;p&gt;前三个元素的话： 1-2-0&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def postorder(self, node):
+  &amp;quot;递归实现后续遍历:左右根&amp;quot;
+  if node is None:
+    return
+  self.postorder(node.lchild)
+  self.postorder(node.rchild) 
+  print(node.elem) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;二叉树反推拓展-由遍历确定一棵树&#34;&gt;二叉树反推(拓展) 由遍历确定一棵树&lt;/h2&gt;
+&lt;p&gt;二叉树有三种深度优先遍历方法：先序中序和后序，如果已知中序和先序，或已知中序和后序，可以确定二叉树的结构。&lt;/p&gt;
+&lt;p&gt;例：&lt;/p&gt;
+&lt;p&gt;    先序：0 1 3 7 8 4 9 2 5 6&lt;/p&gt;
+&lt;p&gt;    中序：7 3 8 1 9 4 0 5 2 6&lt;/p&gt;
+&lt;p&gt;1、先序找根，中序定两边&lt;/p&gt;
+&lt;p&gt;先序的特点是第一个元素是根确定0是根节点，中序的特点是根两侧分别是左右子树确定7 3 8 1 9 4 在0左边，5 2 6在0右边&lt;/p&gt;
+&lt;p&gt;所以我们反推分界初始图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;image/image-20180718161250980.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;2、左右分别重复1操作&lt;/p&gt;
+&lt;p&gt;所以左侧子树的根节点是1，右侧子树的根节点是2&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;image/image-20180718161627429.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;3、不停的重复1操作&lt;/p&gt;
+&lt;p&gt;最终的二叉树图是：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;image/image-20180718170607079.png&#34; alt=&#34;替代文字&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;完结撒花&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Occlusion-aware UAV Path Planning for Reconnaissance and Surveillance in Complex Environments</title>
@@ -71,304 +2131,6 @@
       <link>https://jianzhang6.github.io/blog/build-an-autonomous-car-with-python/01/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       <guid>https://jianzhang6.github.io/blog/build-an-autonomous-car-with-python/01/</guid>
-      <description>&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
-import matplotlib.pyplot as plt
-from sklearn import datasets
-import keras
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.optimizers import Adam
-from keras.utils.np_utils import to_categorical
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;n_pts = 500
-centers = [[-1, 1], [-1, -1], [1, -1], [1, 1], [0, 0]]
-X, y = datasets.make_blobs(n_samples=n_pts, random_state=123, centers=centers, cluster_std=0.4)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;plt.scatter(X[y==0, 0],X[y==0, 1])
-plt.scatter(X[y==1, 0],X[y==1, 1])
-plt.scatter(X[y==2, 0],X[y==2, 1])
-plt.scatter(X[y==3, 0],X[y==3, 1])
-plt.scatter(X[y==4, 0],X[y==4, 1])
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;matplotlib.collections.PathCollection at 0x1a33248400&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./Multiclass_2_1.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(y)
-y_cat = to_categorical(y,5)
-print(y_cat)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;[3 3 4 0 2 1 1 4 4 4 3 2 1 0 2 4 4 4 3 0 3 0 3 4 1 3 1 0 4 2 3 1 0 4 1 0 4
- 0 4 0 1 3 3 0 3 1 3 4 0 4 0 2 3 0 2 4 4 0 3 4 1 3 0 4 2 1 1 2 3 2 3 2 1 1
- 3 2 4 2 2 3 0 2 4 3 2 1 3 3 3 3 1 1 4 2 4 4 1 2 4 1 4 2 2 3 4 1 1 3 3 2 1
- 3 1 0 1 0 4 4 4 3 1 3 3 3 1 4 4 0 2 0 1 1 0 4 0 1 1 4 4 0 4 3 4 4 2 4 0 0
- 0 4 2 0 4 1 0 2 2 1 3 0 1 2 2 4 4 1 3 2 3 3 3 2 2 2 4 0 1 1 0 1 4 4 3 2 3
- 2 3 1 0 3 4 2 1 0 0 0 4 3 0 4 2 2 3 1 0 4 4 1 2 1 3 1 4 4 0 1 4 2 4 0 4 0
- 1 2 3 0 1 0 3 3 4 3 4 0 0 1 1 3 0 4 1 4 2 1 2 4 4 3 3 1 1 1 4 1 1 1 4 3 1
- 0 0 2 2 2 3 2 3 4 2 3 3 1 1 0 4 0 3 0 0 0 3 2 2 1 4 2 0 0 2 2 1 3 3 1 3 0
- 0 1 4 2 2 2 1 0 0 1 0 0 1 2 4 2 4 2 1 3 0 0 1 4 1 2 4 4 4 3 4 1 2 3 1 3 1
- 0 0 2 4 1 3 1 1 2 1 4 3 1 2 3 2 0 4 1 4 0 2 2 0 1 2 2 4 4 0 4 1 3 3 2 2 0
- 4 3 3 1 2 2 4 3 0 3 3 3 3 0 1 4 4 4 0 3 3 2 4 0 4 0 0 4 2 2 2 3 0 2 0 0 1
- 2 3 0 0 2 4 2 3 0 3 0 1 0 4 1 0 0 1 3 1 4 0 2 1 1 3 2 3 2 2 2 3 1 0 0 0 1
- 3 4 2 1 0 2 1 4 3 3 4 0 0 2 2 0 0 2 2 3 4 3 2 2 2 2 0 1 3 0 2 1 2 0 2 3 4
- 3 1 4 3 3 0 2 4 0 4 1 3 2 1 3 0 1 2 1]
-[[0. 0. 0. 1. 0.]
- [0. 0. 0. 1. 0.]
- [0. 0. 0. 0. 1.]
- ...
- [0. 1. 0. 0. 0.]
- [0. 0. 1. 0. 0.]
- [0. 1. 0. 0. 0.]]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;model = Sequential()
-model.add(Dense(units=5, input_shape=(2,), activation=&#39;softmax&#39;))
-model.compile(Adam(0.1), loss=&#39;categorical_crossentropy&#39;, metrics=[&#39;accuracy&#39;])
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;model.fit(x=X, y=y_cat, verbose=1, batch_size=50, epochs=100)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Epoch 1/100
-500/500 [==============================] - 1s 1ms/step - loss: 1.2781 - acc: 0.4940
-Epoch 2/100
-500/500 [==============================] - 0s 49us/step - loss: 0.6296 - acc: 0.8520
-Epoch 3/100
-500/500 [==============================] - 0s 47us/step - loss: 0.4182 - acc: 0.9120
-Epoch 4/100
-500/500 [==============================] - 0s 65us/step - loss: 0.3323 - acc: 0.9440
-Epoch 5/100
-500/500 [==============================] - 0s 57us/step - loss: 0.2890 - acc: 0.9420
-Epoch 6/100
-500/500 [==============================] - 0s 50us/step - loss: 0.2626 - acc: 0.9460
-Epoch 7/100
-500/500 [==============================] - 0s 38us/step - loss: 0.2451 - acc: 0.9440
-Epoch 8/100
-500/500 [==============================] - 0s 51us/step - loss: 0.2323 - acc: 0.9480
-Epoch 9/100
-500/500 [==============================] - 0s 40us/step - loss: 0.2217 - acc: 0.9500
-Epoch 10/100
-500/500 [==============================] - 0s 150us/step - loss: 0.2145 - acc: 0.9500
-Epoch 11/100
-500/500 [==============================] - 0s 76us/step - loss: 0.2062 - acc: 0.9460
-Epoch 12/100
-500/500 [==============================] - 0s 72us/step - loss: 0.2001 - acc: 0.9440
-Epoch 13/100
-500/500 [==============================] - 0s 65us/step - loss: 0.1956 - acc: 0.9500
-Epoch 14/100
-500/500 [==============================] - 0s 47us/step - loss: 0.1914 - acc: 0.9500
-Epoch 15/100
-500/500 [==============================] - 0s 85us/step - loss: 0.1877 - acc: 0.9480
-Epoch 16/100
-500/500 [==============================] - 0s 64us/step - loss: 0.1857 - acc: 0.9460
-Epoch 17/100
-500/500 [==============================] - 0s 67us/step - loss: 0.1816 - acc: 0.9480
-Epoch 18/100
-500/500 [==============================] - 0s 60us/step - loss: 0.1811 - acc: 0.9420
-Epoch 19/100
-500/500 [==============================] - 0s 69us/step - loss: 0.1766 - acc: 0.9500
-Epoch 20/100
-500/500 [==============================] - 0s 79us/step - loss: 0.1767 - acc: 0.9460
-Epoch 21/100
-500/500 [==============================] - 0s 53us/step - loss: 0.1721 - acc: 0.9500
-Epoch 22/100
-500/500 [==============================] - 0s 57us/step - loss: 0.1725 - acc: 0.9460
-Epoch 23/100
-500/500 [==============================] - 0s 54us/step - loss: 0.1688 - acc: 0.9500
-Epoch 24/100
-500/500 [==============================] - 0s 69us/step - loss: 0.1693 - acc: 0.9440
-Epoch 25/100
-500/500 [==============================] - 0s 59us/step - loss: 0.1665 - acc: 0.9480
-Epoch 26/100
-500/500 [==============================] - 0s 91us/step - loss: 0.1666 - acc: 0.9460
-Epoch 27/100
-500/500 [==============================] - 0s 63us/step - loss: 0.1650 - acc: 0.9500
-Epoch 28/100
-500/500 [==============================] - 0s 68us/step - loss: 0.1637 - acc: 0.9520
-Epoch 29/100
-500/500 [==============================] - 0s 61us/step - loss: 0.1630 - acc: 0.9520
-Epoch 30/100
-500/500 [==============================] - 0s 76us/step - loss: 0.1634 - acc: 0.9440
-Epoch 31/100
-500/500 [==============================] - 0s 48us/step - loss: 0.1607 - acc: 0.9500
-Epoch 32/100
-500/500 [==============================] - 0s 85us/step - loss: 0.1613 - acc: 0.9480
-Epoch 33/100
-500/500 [==============================] - 0s 65us/step - loss: 0.1604 - acc: 0.9500
-Epoch 34/100
-500/500 [==============================] - 0s 58us/step - loss: 0.1604 - acc: 0.9480
-Epoch 35/100
-500/500 [==============================] - 0s 75us/step - loss: 0.1590 - acc: 0.9500
-Epoch 36/100
-500/500 [==============================] - 0s 52us/step - loss: 0.1590 - acc: 0.9500
-Epoch 37/100
-500/500 [==============================] - 0s 59us/step - loss: 0.1582 - acc: 0.9500
-Epoch 38/100
-500/500 [==============================] - 0s 60us/step - loss: 0.1575 - acc: 0.9500
-Epoch 39/100
-500/500 [==============================] - 0s 62us/step - loss: 0.1592 - acc: 0.9500
-Epoch 40/100
-500/500 [==============================] - 0s 58us/step - loss: 0.1581 - acc: 0.9460
-Epoch 41/100
-500/500 [==============================] - 0s 46us/step - loss: 0.1571 - acc: 0.9520
-Epoch 42/100
-500/500 [==============================] - 0s 55us/step - loss: 0.1562 - acc: 0.9520
-Epoch 43/100
-500/500 [==============================] - 0s 51us/step - loss: 0.1557 - acc: 0.9480
-Epoch 44/100
-500/500 [==============================] - 0s 57us/step - loss: 0.1567 - acc: 0.9500
-Epoch 45/100
-500/500 [==============================] - 0s 55us/step - loss: 0.1556 - acc: 0.9520
-Epoch 46/100
-500/500 [==============================] - 0s 45us/step - loss: 0.1571 - acc: 0.9480
-Epoch 47/100
-500/500 [==============================] - 0s 45us/step - loss: 0.1561 - acc: 0.9520
-Epoch 48/100
-500/500 [==============================] - 0s 42us/step - loss: 0.1555 - acc: 0.9440
-Epoch 49/100
-500/500 [==============================] - 0s 47us/step - loss: 0.1548 - acc: 0.9440
-Epoch 50/100
-500/500 [==============================] - 0s 49us/step - loss: 0.1543 - acc: 0.9440
-Epoch 51/100
-500/500 [==============================] - 0s 40us/step - loss: 0.1537 - acc: 0.9520
-Epoch 52/100
-500/500 [==============================] - 0s 45us/step - loss: 0.1539 - acc: 0.9500
-Epoch 53/100
-500/500 [==============================] - 0s 43us/step - loss: 0.1531 - acc: 0.9520
-Epoch 54/100
-500/500 [==============================] - 0s 47us/step - loss: 0.1550 - acc: 0.9460
-Epoch 55/100
-500/500 [==============================] - 0s 48us/step - loss: 0.1524 - acc: 0.9520
-Epoch 56/100
-500/500 [==============================] - 0s 36us/step - loss: 0.1541 - acc: 0.9520
-Epoch 57/100
-500/500 [==============================] - 0s 49us/step - loss: 0.1538 - acc: 0.9480
-Epoch 58/100
-500/500 [==============================] - 0s 43us/step - loss: 0.1530 - acc: 0.9480
-Epoch 59/100
-500/500 [==============================] - 0s 51us/step - loss: 0.1533 - acc: 0.9520
-Epoch 60/100
-500/500 [==============================] - 0s 38us/step - loss: 0.1528 - acc: 0.9520
-Epoch 61/100
-500/500 [==============================] - 0s 46us/step - loss: 0.1522 - acc: 0.9500
-Epoch 62/100
-500/500 [==============================] - 0s 45us/step - loss: 0.1526 - acc: 0.9500
-Epoch 63/100
-500/500 [==============================] - 0s 51us/step - loss: 0.1527 - acc: 0.9520
-Epoch 64/100
-500/500 [==============================] - 0s 52us/step - loss: 0.1522 - acc: 0.9500
-Epoch 65/100
-500/500 [==============================] - 0s 51us/step - loss: 0.1541 - acc: 0.9500
-Epoch 66/100
-500/500 [==============================] - 0s 41us/step - loss: 0.1521 - acc: 0.9500
-Epoch 67/100
-500/500 [==============================] - 0s 48us/step - loss: 0.1527 - acc: 0.9520
-Epoch 68/100
-500/500 [==============================] - 0s 53us/step - loss: 0.1533 - acc: 0.9500
-Epoch 69/100
-500/500 [==============================] - 0s 48us/step - loss: 0.1540 - acc: 0.9520
-Epoch 70/100
-500/500 [==============================] - 0s 46us/step - loss: 0.1542 - acc: 0.9460
-Epoch 71/100
-500/500 [==============================] - 0s 42us/step - loss: 0.1524 - acc: 0.9520
-Epoch 72/100
-500/500 [==============================] - 0s 42us/step - loss: 0.1535 - acc: 0.9500
-Epoch 73/100
-500/500 [==============================] - 0s 49us/step - loss: 0.1527 - acc: 0.9500
-Epoch 74/100
-500/500 [==============================] - 0s 47us/step - loss: 0.1518 - acc: 0.9480
-Epoch 75/100
-500/500 [==============================] - 0s 45us/step - loss: 0.1533 - acc: 0.9480
-Epoch 76/100
-500/500 [==============================] - 0s 39us/step - loss: 0.1516 - acc: 0.9500
-Epoch 77/100
-500/500 [==============================] - 0s 44us/step - loss: 0.1531 - acc: 0.9460
-Epoch 78/100
-500/500 [==============================] - 0s 45us/step - loss: 0.1555 - acc: 0.9480
-Epoch 79/100
-500/500 [==============================] - 0s 54us/step - loss: 0.1534 - acc: 0.9480
-Epoch 80/100
-500/500 [==============================] - 0s 48us/step - loss: 0.1527 - acc: 0.9460
-Epoch 81/100
-500/500 [==============================] - 0s 59us/step - loss: 0.1532 - acc: 0.9480
-Epoch 82/100
-500/500 [==============================] - 0s 66us/step - loss: 0.1520 - acc: 0.9480
-Epoch 83/100
-500/500 [==============================] - 0s 53us/step - loss: 0.1517 - acc: 0.9520
-Epoch 84/100
-500/500 [==============================] - 0s 55us/step - loss: 0.1524 - acc: 0.9500
-Epoch 85/100
-500/500 [==============================] - 0s 65us/step - loss: 0.1504 - acc: 0.9520
-Epoch 86/100
-500/500 [==============================] - 0s 63us/step - loss: 0.1518 - acc: 0.9500
-Epoch 87/100
-500/500 [==============================] - 0s 53us/step - loss: 0.1524 - acc: 0.9480
-Epoch 88/100
-500/500 [==============================] - 0s 51us/step - loss: 0.1512 - acc: 0.9480
-Epoch 89/100
-500/500 [==============================] - 0s 57us/step - loss: 0.1524 - acc: 0.9520
-Epoch 90/100
-500/500 [==============================] - 0s 62us/step - loss: 0.1524 - acc: 0.9500
-Epoch 91/100
-500/500 [==============================] - 0s 58us/step - loss: 0.1522 - acc: 0.9520
-Epoch 92/100
-500/500 [==============================] - 0s 62us/step - loss: 0.1516 - acc: 0.9480
-Epoch 93/100
-500/500 [==============================] - 0s 53us/step - loss: 0.1525 - acc: 0.9480
-Epoch 94/100
-500/500 [==============================] - 0s 61us/step - loss: 0.1510 - acc: 0.9520
-Epoch 95/100
-500/500 [==============================] - 0s 57us/step - loss: 0.1525 - acc: 0.9520
-Epoch 96/100
-500/500 [==============================] - 0s 38us/step - loss: 0.1504 - acc: 0.9480
-Epoch 97/100
-500/500 [==============================] - 0s 55us/step - loss: 0.1511 - acc: 0.9500
-Epoch 98/100
-500/500 [==============================] - 0s 56us/step - loss: 0.1516 - acc: 0.9500
-Epoch 99/100
-500/500 [==============================] - 0s 46us/step - loss: 0.1503 - acc: 0.9500
-Epoch 100/100
-500/500 [==============================] - 0s 61us/step - loss: 0.1518 - acc: 0.9480
-
-
-
-
-
-&amp;lt;keras.callbacks.History at 0x1a332f0940&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def plot_decision_boundary(X, y_cat, model):
-    x_span = np.linspace(min(X[:, 0]) - 1, max(X[:, 0]) + 1)
-    y_span = np.linspace(min(X[:, 1]) - 1, max(X[:, 1]) + 1)
-    xx, yy = np.meshgrid(x_span, y_span)
-    grid = np.c_[xx.ravel(), yy.ravel()]
-    pred_func = model.predict_classes(grid)
-    z = pred_func.reshape(xx.shape)
-    plt.contourf(xx, yy, z)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;plot_decision_boundary(X, y_cat, model)
-plt.scatter(X[y==0, 0],X[y==0, 1])
-plt.scatter(X[y==1, 0],X[y==1, 1])
-plt.scatter(X[y==2, 0],X[y==2, 1])
-plt.scatter(X[y==3, 0],X[y==3, 1])
-plt.scatter(X[y==4, 0],X[y==4, 1])
-
-x = 0.5
-y = 0.5
-
-point = np.array([[x, y]])
-predict = model.predict_classes(point)
-plt.plot([x], [y], marker=&#39;o&#39;, markersize=10, color=&amp;quot;yellow&amp;quot;)
-# plt.show()
-print(&amp;quot;Prediction is: &amp;quot;, predict)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Prediction is:  [3]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./Multiclass_7_1.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>09 Multiclass Classification</title>
-      <link>https://jianzhang6.github.io/blog/build-an-autonomous-car-with-python/09/</link>
-      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>https://jianzhang6.github.io/blog/build-an-autonomous-car-with-python/09/</guid>
       <description>&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import datasets

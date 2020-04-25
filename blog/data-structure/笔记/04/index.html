@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.7.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Jian Zhang">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="数据结构与算法笔记04">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/04/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu931796a4a973aa12569eec04f67feb0b_29675_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu931796a4a973aa12569eec04f67feb0b_29675_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/04/">
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Jian Zhang">
+  <meta property="og:url" content="https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/04/">
+  <meta property="og:title" content="04 排序与搜索 | Jian Zhang">
+  <meta property="og:description" content="数据结构与算法笔记04"><meta property="og:image" content="https://jianzhang6.github.io/images/icon_hu931796a4a973aa12569eec04f67feb0b_29675_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://jianzhang6.github.io/images/icon_hu931796a4a973aa12569eec04f67feb0b_29675_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-04-25T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-04-25T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>04 排序与搜索 | Jian Zhang</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Jian Zhang</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Jian Zhang</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>04 排序与搜索</h1>
+
+  
+  <p class="page-subtitle">数据结构与算法</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span>Jian Zhang</span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Apr 25, 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/data-structure/">data structure</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h1 id="排序算法的稳定性">排序算法的稳定性</h1>
+<p>排序算法（英语：Sorting algorithm）是一种能将一串数据依照特定顺序进行排列的一种算法。</p>
+<p>稳定性：稳定排序算法会让原本有相等键值的纪录维持相对次序。也就是如果一个排序算法是稳定的，当有两个相等键值的纪录R和S，且在原本的列表中R出现在S之前，在排序过的列表中R也将会是在S之前。</p>
+<p>当相等的元素是无法分辨的，比如像是整数，稳定性并不是一个问题。然而，假设以下的数对将要以他们的第一个数字来排序。</p>
+<h2 id="常见排序算法效率比较">常见排序算法效率比较</h2>
+<p><img src="http://www.soong.site/datastructure/assets/31.png" alt="替代文字"></p>
+<h2 id="冒泡排序-bubble-sort">冒泡排序 Bubble Sort</h2>
+<p>冒泡排序算法的运作如下：</p>
+<p>比较相邻的元素。如果第一个比第二个大（升序），就交换他们两个。
+对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，<strong>最后的元素会是最大的数</strong>。
+针对所有的元素重复以上的步骤，除了最后一个。
+持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p>
+<p><img src="http://www.soong.site/datastructure/assets/23.png" alt="替代文字"></p>
+<pre><code>def bubble_sort(alist):
+  #自己写的！
+    for j in range(len(alist)-1, 0, -1):
+      for i in range(j):
+        if alist[i] &gt; alist[i+1]:
+          alist[i], alist[i+1] = alist[i+1], alist[i]
+        
+li = [54,26,93,17,77,31,44,55,20]
+bubble_sort(li)
+print(li)
+</code></pre>
+<pre><code>[17, 20, 26, 31, 44, 54, 55, 77, 93]
+</code></pre>
+<pre><code>#优化：如果给的就是从大到小排好的数列
+def bubble_sort(alist):
+    for j in range(len(alist)-1,0,-1):
+        # j表示每次遍历需要比较的次数，是逐渐减小的
+        count = 0
+        for i in range(j):
+            if alist[i] &gt; alist[i+1]:
+                alist[i], alist[i+1] = alist[i+1], alist[i]
+                count += 1
+        if count == 0:
+          return alist
+
+
+li = [1,2,3,4,5]
+bubble_sort(li)
+print(li)
+</code></pre>
+<pre><code>[1, 2, 3, 4, 5]
+</code></pre>
+<h3 id="时间复杂度">时间复杂度</h3>
+<ul>
+<li>最优时间复杂度：O(n)</li>
+<li>最坏时间复杂度：O($n^2$)</li>
+<li>稳定性：稳定</li>
+</ul>
+<h2 id="选择排序selection-sort">选择排序（Selection sort）</h2>
+<p><img src="http://www.soong.site/datastructure/assets/24.png" alt="替代文字"></p>
+<p>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
+<pre><code>def selection_sort(alist):
+    n = len(alist)
+    # 需要进行n-1次选择操作
+    for i in range(n-1):
+        # 记录最小位置
+        min_index = i
+        # 从i+1位置到末尾选择出最小数据
+        for j in range(i+1, n):
+            if alist[j] &lt; alist[min_index]:
+                min_index = j
+        # 如果选择出的数据不在正确位置，进行交换
+        if min_index != i:
+            alist[i], alist[min_index] = alist[min_index], alist[i]
+
+alist = [54,226,93,17,77,31,44,55,20]
+selection_sort(alist)
+print(alist)
+</code></pre>
+<h3 id="时间复杂度-1">时间复杂度</h3>
+<ul>
+<li>最优时间复杂度：O($n^2$)</li>
+<li>最坏时间复杂度：O($n^2$)</li>
+<li>稳定性：不稳定（考虑升序每次选择最大的情况）</li>
+</ul>
+<p>li=[$10_1$, 4, 5, 7, $10_2$, 9] 每次选最大值排到队尾</p>
+<p>排完：
+li=[4, 5, 7, 9, $10_2$,$10_1$]</p>
+<p>$10_1$, $10_2$位置和原来的位置不一样了，故不稳定</p>
+<h2 id="插入排序insertion-sort">插入排序（Insertion Sort）</h2>
+<p>它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
+<p><img src="http://www.soong.site/datastructure/assets/25.png" alt="替代文字"></p>
+<pre><code>def insert_sort(alist):
+  for i in range(1, len(alist)):
+  # 从第二个位置，即下标为1的元素开始向前插入
+    for j in range(i, 0, -1):
+    # 从第i个元素开始向前比较，如果小于前一个元素，交换位置:
+    # i, i-1,i-2...1
+      if alist[j] &lt; alist[j-1]:
+        alist[j], alist[j-1]  = alist[j-1], alist[j]
+
+alist = [54,26,93,17,77,31,44,55,20]
+insert_sort(alist)
+print(alist)
+</code></pre>
+<pre><code>[17, 20, 26, 31, 44, 54, 55, 77, 93]
+</code></pre>
+<pre><code># 优化
+def insert_sort(alist):
+  for i in range(1, len(alist)):
+  # 从第二个位置，即下标为1的元素开始向前插入
+    j = i
+    while j &gt; 0:
+    # 从第i个元素开始向前比较，如果小于前一个元素，交换位置:
+    # i, i-1,i-2...1
+      if alist[j] &lt; alist[j-1]:
+        alist[j], alist[j-1]  = alist[j-1], alist[j]
+        j -= 1
+      else:
+        break
+
+alist = [54,26,93,17,77,31,44,55,20]
+insert_sort(alist)
+print(alist)
+</code></pre>
+<pre><code>[17, 20, 26, 31, 44, 54, 55, 77, 93]
+</code></pre>
+<h3 id="时间复杂度-2">时间复杂度</h3>
+<ul>
+<li>最优时间复杂度：O(n) 升序排列，有序升序数列</li>
+<li>最坏时间复杂度：O($n^2$)</li>
+<li>稳定性：稳定</li>
+</ul>
+<h2 id="希尔排序shell-sort">希尔排序(Shell Sort)</h2>
+<p>插入排序的一种。也称缩小增量排序，是直接插入排序算法的一种更高效的改进版本。希尔排序是非稳定排序算法。希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止。</p>
+<p><img src="http://www.soong.site/datastructure/assets/28.png" alt="替代文字"></p>
+<pre><code>def shell_sort(alist):
+  &quot;希尔排序&quot;
+  n = len(alist)
+  gap = n // 2
+  while gap &gt; 0: #gap==1 插入排序
+    #希尔和插入算法非常像，把i换为gap
+    for j in range(gap, n):
+      i = j
+      while i&gt;0:
+        if alist[i] &lt; alist[i - gap]:
+          alist[i], alist[i-gap] = alist[i-gap], alist[i]
+          i -= gap
+        else:
+          break
+  #缩短gap步长
+  gap //= 2  #/是精确除法，//是向下取整除法，%是求模
+
+alist = [54,26,93,17,77,31,44,55,20]
+insert_sort(alist)
+print(alist)
+
+</code></pre>
+<pre><code>[17, 20, 26, 31, 44, 54, 55, 77, 93]
+</code></pre>
+<pre><code>def insert_sort(alist):
+  &quot;插入排序&quot;
+  n = len(alist)
+  # 从右边无序序列去多少个元素执行这样的过程
+  for j in range(1, n):
+  # j = [1,2,3...,n-1],
+  # i 内层循环起始值
+    i = j
+    # 从第i个元素开始向前比较，如果小于前一个元素，交换位置:
+    while i &gt;0:
+      if alist[i] &lt; alist[i-1]:
+        alist[i], alist[i-1]  = alist[i-1], alist[i]
+        i -= 1
+      else:
+         break
+
+alist = [54,26,93,17,77,31,44,55,20]
+insert_sort(alist)
+print(alist)
+</code></pre>
+<pre><code>[17, 20, 26, 31, 44, 54, 55, 77, 93]
+</code></pre>
+<h3 id="时间复杂度-3">时间复杂度</h3>
+<ul>
+<li>最优时间复杂度：跟序列的不同而不同而不同</li>
+<li>最坏时间复杂度：O($n^2$) ，即gap为1，插入排序</li>
+<li>稳定性：不稳定</li>
+</ul>
+<h2 id="快速排序quicksort必须掌握">快速排序（Quicksort）必须掌握</h2>
+<p>快速排序（英语：Quicksort），又称划分交换排序（partition-exchange sort），通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。</p>
+<p>步骤为：</p>
+<p>从数列中挑出一个元素，称为&quot;基准&rdquo;（pivot），
+重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。
+递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。
+递归的最底部情形，是数列的大小是零或一，也就是永远都已经被排序好了。虽然一直递归下去，但是这个算法总会结束，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。</p>
+<p><img src="http://www.soong.site/datastructure/assets/27.png" alt="替代文字"></p>
+<p><img src="https://cdn.breakyizhan.com/wp-content/uploads/2019/04/121659127078460.jpg" alt="替代文字"></p>
+<p><img src="https://images2017.cnblogs.com/blog/1199607/201708/1199607-20170831232643983-1675647445.gif" alt="替代文字"></p>
+<pre><code>def quick_sort(alist, start, end):
+    &quot;&quot;&quot;快速排序&quot;&quot;&quot;
+
+    # 递归的退出条件
+    if start &gt;= end:
+        return
+
+    # 设定起始元素为要寻找位置的基准元素
+    mid = alist[start]
+
+    # low为序列左边的由左向右移动的游标
+    low = start
+
+    # high为序列右边的由右向左移动的游标
+    high = end
+
+    while low &lt; high:
+        # 如果low与high未重合，high指向的元素不比基准元素小，则high向左移动
+        while low &lt; high and alist[high] &gt;= mid:
+            high -= 1
+        # 将high指向的元素放到low的位置上
+        alist[low] = alist[high]
+
+        # 如果low与high未重合，low指向的元素比基准元素小，则low向右移动
+        while low &lt; high and alist[low] &lt; mid:
+            low += 1
+        # 将low指向的元素放到high的位置上
+        alist[high] = alist[low]
+
+    # 退出循环后，low与high重合，此时所指位置为基准元素的正确位置
+    # 将基准元素放到该位置
+    alist[low] = mid
+
+    # 对基准元素左边的子序列进行快速排序
+    quick_sort(alist, start, low-1)
+
+    # 对基准元素右边的子序列进行快速排序
+    quick_sort(alist, low+1, end)
+
+
+alist = [54,26,93,17,77,31,44,55,20]
+quick_sort(alist,0,len(alist)-1)
+print(alist)
+</code></pre>
+<pre><code>[17, 20, 26, 31, 44, 54, 55, 77, 93]
+</code></pre>
+<h3 id="时间复杂度-4">时间复杂度</h3>
+<ul>
+<li>最优时间复杂度：O($nlogn$)<br>
+横向n，纵向logn($2^x = n, x = logn$)</li>
+<li>最坏时间复杂度：O($n^2$)<br>
+横向n，纵向n</li>
+<li>稳定性：不稳定</li>
+</ul>
+<h2 id="归并排序-merge-sort">归并排序 merge sort</h2>
+<p>归并排序是采用分治法的一个非常典型的应用。归并排序的思想就是先递归分解数组，再合并数组。</p>
+<p>将数组分解最小之后，然后合并两个有序数组，基本思路是比较两个数组的最前面的数，谁小就先取谁，取了后相应的指针就往后移一位。然后再比较，直至一个数组为空，最后把另一个数组的剩余部分复制过来即可。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif" alt="替代文字"></p>
+<pre><code>def merge_sort(alist):
+    &quot;归并排序&quot;
+    if len(alist) &lt;= 1:
+        return alist
+    # 二分分解
+    num = len(alist)//2
+    left = merge_sort(alist[:num])
+    right = merge_sort(alist[num:])
+    # 合并
+    return merge(left,right)
+
+def merge(left, right):
+    '''合并操作，将两个有序数组left[]和right[]合并成一个大的有序数组'''
+    #left与right的下标指针
+    l, r = 0, 0
+    result = []
+    while l&lt;len(left) and r&lt;len(right):
+        if left[l] &lt;= right[r]:#加上=情况，就稳定了
+            result.append(left[l])
+            l += 1
+        else:
+            result.append(right[r])
+            r += 1
+    result += left[l:]
+    result += right[r:]
+    return result
+
+alist = [54,26,93,17,77,31,44,55,20]
+sorted_alist = merge_sort(alist)
+print(sorted_alist)
+</code></pre>
+<pre><code>[17, 20, 26, 31, 44, 54, 55, 77, 93]
+</code></pre>
+<h3 id="时间复杂度-5">时间复杂度</h3>
+<ul>
+<li>最优时间复杂度：O($nlogn$)<br>
+横向logn($2^x = n, x = logn$)，纵向n</li>
+<li>最坏时间复杂度：O($nlogn$)<br>
+需要额外 空间</li>
+<li>稳定性：稳定</li>
+</ul>
+<p><img src="https://cdn.breakyizhan.com/wp-content/uploads/2019/04/sort.png" alt="替代文字"></p>
+<p><img src="https://cdn.breakyizhan.com/wp-content/uploads/2019/04/0B319B38-B70E-4118-B897-74EFA7E368F9.png" alt="替代文字"></p>
+<h2 id="搜索-二分法">搜索 二分法</h2>
+<p>二分查找又称折半查找，优点是比较次数少，查找速度快，平均性能好；其缺点是要求待查表为有序表，且插入删除困难。因此，折半查找方法适用于不经常变动而查找频繁的有序列表。首先，假设表中元素是按升序排列，将表中间位置记录的关键字与查找关键字比较，如果两者相等，则查找成功；否则利用中间位置记录将表分成前、后两个子表，如果中间位置记录的关键字大于查找关键字，则进一步查找前一子表，否则进一步查找后一子表。重复以上过程，直到找到满足条件的记录，使查找成功，或直到子表不存在为止，此时查找不成功。</p>
+<p><strong>只能作用在有序的顺序表</strong></p>
+<pre><code>def binary_search(alist, item):
+  &quot;递归实现&quot;
+  n = len(alist)
+
+  if n &gt;0: 
+    mid =  n//2
+    if alist[mid] == item:
+      return True
+
+    elif alist[mid]&gt;item:
+      return binary_search(alist[:mid], item)
+    else:
+      return binary_search(alist[mid+1:], item)
+  return False
+
+testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42]
+print(binary_search(testlist, 10))
+print(binary_search(testlist, 42))
+
+</code></pre>
+<pre><code>False
+True
+</code></pre>
+<pre><code>def binary_search(alist, item):
+  &quot;非递归实现&quot;
+  n = len(alist)
+  first = 0
+  last = n-1
+  
+  while first&lt;=last:
+    mid =  (first+last)//2 
+    # 不能放在while外层  
+    if alist[mid] == item:
+        return True
+    elif alist[mid]&gt;item:
+        last = mid-1
+    else:
+        first = mid+1
+  return False
+
+
+testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42]
+print(binary_search(testlist, 10))
+print(binary_search(testlist, 42))
+</code></pre>
+<pre><code>False
+True
+</code></pre>
+<pre><code>def binary_search(alist, item):
+      first = 0
+      last = len(alist)-1
+      while first&lt;=last:
+          midpoint = (first + last)//2
+          if alist[midpoint] == item:
+              return True
+          elif item &lt; alist[midpoint]:
+              last = midpoint-1
+          else:
+              first = midpoint+1
+      return False
+testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]
+print(binary_search(testlist, 3))
+print(binary_search(testlist, 13))
+</code></pre>
+<pre><code>False
+True
+</code></pre>
+<h3 id="时间复杂度-6">时间复杂度</h3>
+<ul>
+<li>最优时间复杂度：O(1)</li>
+<li>最坏时间复杂度：O(logn)</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/note/">Note</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/04/&amp;text=04%20%e6%8e%92%e5%ba%8f%e4%b8%8e%e6%90%9c%e7%b4%a2" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/04/&amp;t=04%20%e6%8e%92%e5%ba%8f%e4%b8%8e%e6%90%9c%e7%b4%a2" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=04%20%e6%8e%92%e5%ba%8f%e4%b8%8e%e6%90%9c%e7%b4%a2&amp;body=https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/04/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/04/&amp;title=04%20%e6%8e%92%e5%ba%8f%e4%b8%8e%e6%90%9c%e7%b4%a2" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=04%20%e6%8e%92%e5%ba%8f%e4%b8%8e%e6%90%9c%e7%b4%a2%20https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/04/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://jianzhang6.github.io/blog/data-structure/%E7%AC%94%E8%AE%B0/04/&amp;title=04%20%e6%8e%92%e5%ba%8f%e4%b8%8e%e6%90%9c%e7%b4%a2" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu8360e9564c9e46f90302c9c5afca8457_6181_250x250_fill_q90_lanczos_center.jpeg" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://jianzhang6.github.io">Jian Zhang</a></h5>
+      <h6 class="card-subtitle">Ph.D. Candidate <br/> School of Electrical Engineering and Telecommunications</h6>
+      <p class="card-text">My research interests include autonomous robots, hybrid dynamical systems, machine learning and intelligent systems.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:jian.zhang4@unsw.edu.au" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.co.kr/citations?hl=en&amp;user=7xLCPN0AAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Jian-Chueng" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.researchgate.net/profile/Jian_Zhang318" target="_blank" rel="noopener">
+        <i class="fab fa-researchgate"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/blog/data-structure/%E7%AC%94%E8%AE%B0/01/">01 引入概念</a></li>
+      
+      <li><a href="/blog/data-structure/%E7%AC%94%E8%AE%B0/02/">02 顺序表</a></li>
+      
+      <li><a href="/blog/data-structure/%E7%AC%94%E8%AE%B0/03/">03 链表栈队列</a></li>
+      
+      <li><a href="/blog/data-structure/%E7%AC%94%E8%AE%B0/05/">05 树与树算法</a></li>
+      
+      <li><a href="/blog/build-an-autonomous-car-with-python/01/">01 Computer Vision</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.3/mermaid.min.js" integrity="" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.a0d331bcd05dbe8b31e244f796710f08.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    © Jian Zhang &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
